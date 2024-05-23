@@ -14,13 +14,13 @@
     <!-- ************************* CSS Files ************************* -->
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="./zakas/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../zakas/assets/css/bootstrap.css">
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="./zakas/assets/css/vendor.css">
+    <link rel="stylesheet" href="../../zakas/assets/css/vendor.css">
 
     <!-- style css -->
-    <link rel="stylesheet" href="./zakas/assets/css/main.css">
+    <link rel="stylesheet" href="../../zakas/assets/css/main.css">
 
 </head>
 
@@ -39,7 +39,7 @@
     <!-- Main Wrapper Start -->
     <div class="wrapper">
         <!-- Header Start -->
-         <header class="header">
+        <header class="header">
             <div class="header-inner fixed-header">
                 <div class="container">
                     <div class="row align-items-center">
@@ -56,7 +56,7 @@
                                     </a>
                                 </div>
                                 <div class="mainmenu-nav d-none d-lg-block">
-                                   <ul class="mainmenu">
+                                    <ul class="mainmenu">
                                         <li class="mainmenu__item menu-item-has-children active">
                                             <a href="/" class="mainmenu__link">
                                                 <span class="mm-text">Home</span>
@@ -146,10 +146,10 @@
             </div>
         </header>
         <!-- Header End -->
-        
-            @include('partials.success')
-            @include('partials.errors')
-            @yield('content')
+
+        @include('partials.success')
+        @include('partials.errors')
+        @yield('content')
 
         <!-- Footer Start-->
         <footer class="footer">
@@ -235,9 +235,9 @@
 
     <!-- ************************* JS Files ************************* -->
     <!-- jQuery JS -->
-    <script src="./zakas/assets/js/vendor.js"></script>
+    <script src="../../zakas/assets/js/vendor.js"></script>
     <!-- Main JS -->
-    <script src="./zakas/assets/js/main.js"></script>
+    <script src="../../zakas/assets/js/main.js"></script>
 </body>
 
 </html>

@@ -115,7 +115,7 @@ class FrontController extends Controller
                 }
             }
         }
-        return view('cart', ['carts' => $carts, 'locs' => $locs]);
+        return view('newcart', ['carts' => $carts, 'locs' => $locs]);
     }
 
     public function checkout(Request $request)
@@ -163,7 +163,7 @@ class FrontController extends Controller
             } else {
                 $products = Arr::add($products, 'coupon', '');
             }
-            return view('checkout', ['products' => $products]);
+            return view('newcheckout', ['products' => $products]);
         }
         return back();
     }
@@ -276,7 +276,7 @@ class FrontController extends Controller
         $three = Review::where('product_id', $products->id)->where('rating', 3)->count();
         $four = Review::where('product_id', $products->id)->where('rating', 4)->count();
         $five = Review::where('product_id', $products->id)->where('rating', 5)->count();
-        return view('product_view', [
+        return view('newproduct_view', [
             'product' => $products,
             'avr' => $avr_rating,
             'one' => $one,
