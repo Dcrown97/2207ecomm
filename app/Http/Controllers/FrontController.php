@@ -168,6 +168,11 @@ class FrontController extends Controller
         return back();
     }
 
+    public function wishlist()
+    {
+        return view('wishlist');
+    }
+
     public function add_wishlist(Request $request)
     {
         if ($request->product != null && !empty($request->product)) {

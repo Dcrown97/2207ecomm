@@ -32,8 +32,29 @@
                     "autoplay": true
                 }' style="background-color: black">
                 <div class="item">
+                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
+                        style="background-image: url({{ asset('/img/CROPPED3.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-8">
+                                    <div class="slider-content text-center">
+                                        <h1 class="heading__primary color--white mb--30">
+                                            <span class="heading__primary--sub" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
+                                            <span class="heading__primary--main" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
+                                        </h1>
+                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
+                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
                     <div class="single-slide slider-height-2  d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/hero-bgT2.png') }}); ">
+                        style="background-image: url({{ asset('/img/CROPPED1.png') }}); ">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -54,7 +75,49 @@
                 </div>
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/hero-bgT3.png') }});">
+                        style="background-image: url({{ asset('/img/CROPPED4.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-8">
+                                    <div class="slider-content text-center">
+                                        <h1 class="heading__primary color--white mb--30">
+                                            <span class="heading__primary--sub" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
+                                            <span class="heading__primary--main" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
+                                        </h1>
+                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
+                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
+                        style="background-image: url({{ asset('/img/CROPPED5.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-8">
+                                    <div class="slider-content text-center">
+                                        <h1 class="heading__primary color--white mb--30">
+                                            <span class="heading__primary--sub" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
+                                            <span class="heading__primary--main" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
+                                        </h1>
+                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
+                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
+                        style="background-image: url({{ asset('/img/CROPPED2.png') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -239,7 +302,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -404,7 +467,7 @@
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
-                                                                            <a href="wishlist.html" class="action-btn">
+                                                                            <a href="/wishlist" class="action-btn">
                                                                                 <i class="flaticon flaticon-like"></i>
                                                                             </a>
                                                                             <a data-bs-toggle="modal"

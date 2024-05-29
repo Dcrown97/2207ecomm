@@ -147,8 +147,8 @@
         </header>
         <!-- Header End -->
 
-        @include('partials.success')
-        @include('partials.errors')
+        {{-- @include('partials.success')
+        @include('partials.errors') --}}
         @yield('content')
 
         <!-- Footer Start-->

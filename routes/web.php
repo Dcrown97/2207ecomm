@@ -60,6 +60,7 @@ Route::get('/shop', 'FrontController@shop')->name('shop');
 Route::get('/cart', 'FrontController@cart')->name('cart');
 Route::get('/products/view/{id}', 'FrontController@view_product')->name('product.view');
 Route::get('/categories/view/{id}', 'FrontController@view_category')->name('cat.view');
+Route::get('/wishlist', 'FrontController@wishlist');
 Route::post('/wishlist/add', 'FrontController@add_wishlist')->name('wishlist.add');
 Route::delete('/wishlist/delete', 'FrontController@delete_wishlist')->name('wishlist.delete');
 Route::post('/cart/add', 'FrontController@add_cart')->name('cart.add');

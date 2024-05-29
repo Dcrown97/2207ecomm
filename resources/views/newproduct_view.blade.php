@@ -42,41 +42,21 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                             <figure class="product-gallery__image zoom">
-                                                <img src="../../zakas/assets/img/products/prod-9-1.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
+                                                <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
+                                                    alt="{{ $product->name }}">
                                             </figure>
-                                            <figure class="product-gallery__image zoom">
-                                                <img src="../../zakas/assets/img/products/prod-32.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
-                                            </figure>
-                                            <figure class="product-gallery__image zoom">
+                                            @foreach ($product->images as $image)
+                                                <figure class="product-gallery__image zoom">
+                                                    <img src="{{ asset('/img/products/' . $image->file_path) }}"
+                                                        alt="Product">
+                                                </figure>
+                                            @endforeach
+                                            {{-- <figure class="product-gallery__image zoom">
                                                 <img src="../../zakas/assets/img/products/prod-33.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
                                             </figure>
                                             <figure class="product-gallery__image zoom">
                                                 <img src="../../zakas/assets/img/products/prod-34.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
-                                            </figure>
+                                            </figure> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -120,17 +100,20 @@
                                             }
                                         ]'>
                                         <figure class="product-gallery__nav-image--single">
-                                            <img src="../../zakas/assets/img/products/prod-9-1-170x195.jpg" alt="Products">
+                                            <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
+                                                alt="Products">
                                         </figure>
-                                        <figure class="product-gallery__nav-image--single">
-                                            <img src="../../zakas/assets/img/products/prod-32-170x195.jpg" alt="Products">
-                                        </figure>
-                                        <figure class="product-gallery__nav-image--single">
+                                        @foreach ($product->images as $image)
+                                            <figure class="product-gallery__nav-image--single">
+                                                <img src="{{ asset('/img/products/' . $image->file_path) }}" alt="Products">
+                                            </figure>
+                                        @endforeach
+                                        {{-- <figure class="product-gallery__nav-image--single">
                                             <img src="../../zakas/assets/img/products/prod-33-170x195.jpg" alt="Products">
                                         </figure>
                                         <figure class="product-gallery__nav-image--single">
                                             <img src="../../zakas/assets/img/products/prod-34-170x195.jpg" alt="Products">
-                                        </figure>
+                                        </figure> --}}
                                     </div>
                                 </div>
                             </div>
@@ -148,27 +131,45 @@
                                     <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                 </div>
                             </div>
-                            <h3 class="product-title mb--20">Black Blazer</h3>
-                            <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed suscipit arcu
-                                ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci.
-                                Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem
-                                laoreet, feugiat tellus at, hendrerit arcu.</p>
-                            <div class="product-price-wrapper mb--25">
-                                <span class="money">$200.00</span>
-                                <span class="price-separator">-</span>
-                                <span class="money">$400.00</span>
-                            </div>
+                            <h3 class="product-title mb--20">{{ $product->name }}</h3>
+                            <p class="product-short-description mb--20">{!! $product->description !!}</p>
+                            <?php $i = 1; ?>
+                            @foreach ($product->sizes->where('quantity', '>', 0) as $size)
+                                <div class="product-price-wrapper mb--25 tab-pane fade @if ($i == 1) show active @endif"
+                                    id="value{{ $size->id }}" role="tabpanel"
+                                    aria-labelledby="vert-tabs-right-home-tab{{ $size->id }}">
+                                    <span class="money">
+                                        @if (session('currency') == 'Naira')
+                                            ₦{{ number_format($size->cost_ngn, 2) }}
+                                        @else
+                                            ${{ number_format($size->cost_dol) }}
+                                        @endif
+                                    </span>
+                                    <input type="hidden" class="size" id="product{{ $i }}"
+                                        value="{{ $size->id }}">
+                                    {{-- <span class="price-separator">-</span>
+                                    <span class="money">$400.00</span> --}}
+                                </div>
+                                <?php $i++; ?>
+                            @endforeach
                             <form action="#" class="variation-form mb--20">
                                 <div class="product-size-variations d-flex align-items-center mb--15">
                                     <p class="variation-label">Size:</p>
                                     <div class="product-size-variation variation-wrapper">
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn selected" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="S">
-                                                <span class="product-size-variation-label">S</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
+                                        <?php $w = 1; ?>
+                                        @foreach ($product->sizes->where('quantity', '>', 0) as $size)
+                                            <div class="variation">
+                                                <a class="product-size-variation-btn selected" id="size{{ $size->id }}"
+                                                    data-toggle="pill" href="#value{{ $size->id }}" role="tab"
+                                                    aria-controls="tabs-home-{{ $size->id }}"
+                                                    @if ($w == 1) aria-selected="true" @else aria-selected="false" @endif>
+                                                    <span
+                                                        class="product-size-variation-label">{{ $size->size }}{{ $size->measure }}</span>
+                                                </a>
+                                            </div>
+                                            <?php $w++; ?>
+                                        @endforeach
+                                        {{-- <div class="variation">
                                             <a class="product-size-variation-btn" data-bs-toggle="tooltip"
                                                 data-bs-placement="top" title="M">
                                                 <span class="product-size-variation-label">M</span>
@@ -185,7 +186,7 @@
                                                 data-bs-placement="top" title="XL">
                                                 <span class="product-size-variation-label">XL</span>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <a href="#" class="reset_variations">Clear</a>
@@ -205,11 +206,16 @@
                                 </button>
                             </div>
                             <div class="product-footer-meta">
+                                <p><span>Availibility:</span>
+                                    <a href="#"></span> : @if ($product->sizes->where('quantity', '>', '0')->isNotEmpty())
+                                            In Stock
+                                        @else
+                                            <span class="text-warning">Out Of Stock</span>
+                                        @endif
+                                    </a>
+                                </p>
                                 <p><span>Category:</span>
-                                    <a href="shop.html">Full Sweater</a>,
-                                    <a href="shop.html">SweatShirt</a>,
-                                    <a href="shop.html">Jacket</a>,
-                                    <a href="shop.html">Blazer</a>
+                                    <a href="/shop?cat={{ $product->category->name }}">{{ $product->category->name }}</a>
                                 </p>
                             </div>
                         </div>
@@ -440,7 +446,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -507,7 +513,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -573,7 +579,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -640,7 +646,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
