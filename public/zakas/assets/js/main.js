@@ -580,15 +580,15 @@
 	* Nice Select Activation
 	***********************/
 
-	$('.nice-select').niceSelect();
+	// $('.nice-select').niceSelect();
 
-	$(document).on('click.nice_select', '.product-categories .nice-select .option:not(.disabled)', function (e) {
-		var $this = $(this),
-			$value = $this.data('value');
+	// $(document).on('click.nice_select', '.product-categories .nice-select .option:not(.disabled)', function (e) {
+	// 	var $this = $(this),
+	// 		$value = $this.data('value');
 
-		$("#product-tab-content .tab-pane").removeClass('show active');
-		$("#product-tab-content " + "#" + $value).addClass('show active');
-	});
+	// 	$("#product-tab-content .tab-pane").removeClass('show active');
+	// 	$("#product-tab-content " + "#" + $value).addClass('show active');
+	// });
 
 	$('.product-view-mode a').on('click', function (e) {
 		e.preventDefault();

@@ -155,7 +155,7 @@ img {
 }
 
 a:hover {
-    color: #e3bc9a;
+    color: #c2080f;
     text-decoration: none;
 }
 
@@ -398,11 +398,6 @@ textarea,
     -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
 }
-
-.sticky-header .mobile-menu .mean-bar .mean-nav > ul {
-      background-color: #E3BC9A;
-}
-
 @media (min-width: 62em) {
     .sticky-header .main-navigation .mainmenu.white-color .mainmenu__link {
         color: #666666;
@@ -1237,7 +1232,7 @@ textarea,
     color: #111111;
 }
 .single-post-details .entry-content a:hover {
-    color: #e3bc9a;
+    color: #c2080f;
     text-decoration: underline;
 }
 .single-post-details .entry-content h1,
@@ -1304,10 +1299,10 @@ textarea,
         background-color: #4696f0;
     }
     .single-post .post-share .social .social__link.google-plus {
-        background-color: #e3bc9a;
+        background-color: #c2080f;
     }
     .single-post .post-share .social .social__link.pinterest {
-        background-color: #e3bc9a;
+        background-color: #c2080f;
     }
 }
 
@@ -1461,7 +1456,7 @@ textarea,
 /*-- 23.00 - Global Button --*/
 .btn {
     background-color: #ffffff;
-    color: #e3bc9a;
+    color: #c2080f;
     font-size: 16px;
     min-width: 184px;
     min-height: 55px;
@@ -3406,7 +3401,7 @@ textarea,
     color: #4cbb6c;
 }
 .form__output.error {
-    color: #e3bc9a;
+    color: #c2080f;
 }
 
 .form__fieldset {
@@ -4046,7 +4041,7 @@ textarea,
 
 @media (min-width: 62em) {
     .main-navigation .mainmenu__item.active > a {
-        color: #e3bc9a;
+        color: #c2080f;
     }
 }
 
@@ -4114,13 +4109,13 @@ textarea,
         -ms-transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
         -o-transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
         transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
-        background-color: #e3bc9a;
+        background-color: #c2080f;
     }
 }
 
 @media (min-width: 62em) {
     .main-navigation .mainmenu__item.menu-item-has-children > ul li a:hover {
-        color: #e3bc9a;
+        color: #c2080f;
     }
 }
 
@@ -4275,7 +4270,7 @@ textarea,
         > ul.megamenu
         > li
         a.megamenu-title:hover {
-        color: #e3bc9a;
+        color: #c2080f;
     }
 }
 
@@ -4288,7 +4283,7 @@ textarea,
         .mm-text:after {
         position: absolute;
         content: "";
-        background-color: #e3bc9a;
+        background-color: #c2080f;
         width: 50%;
         height: 2px;
         bottom: -10px;
@@ -4441,8 +4436,8 @@ textarea,
 .mobile-menu .mean-bar .meanmenu-reveal {
     position: absolute;
     padding: 0;
-    right: auto !important;
-    left: 0 !important;
+    right: 0 !important;
+    left: auto !important;
     top: -23px;
     display: block;
     width: auto;
@@ -4498,7 +4493,7 @@ textarea,
     margin-top: 0;
 }
 .mobile-menu .mean-bar .mean-nav > ul {
-    /* background-color: #E3BC9A; */
+    background-color: #c2080f;
     border: 1px solid #eeeeee;
     border-top: 0;
     overflow-x: hidden;
@@ -4685,11 +4680,11 @@ textarea,
 }
 
 .offcanvas-navigation .offcanvas-menu li:hover > a {
-    color: #e3bc9a !important;
+    color: #c2080f !important;
 }
 
 .offcanvas-navigation .offcanvas-menu li:hover > .menu-expand {
-    color: #e3bc9a !important;
+    color: #c2080f !important;
 }
 
 /*****************************
@@ -4878,7 +4873,7 @@ textarea,
 }
 @media (max-width: 61.94em) {
     .zakas-product.product-style-2 .product-inner {
-        /* padding-top: 130px; */
+        padding-top: 130px;
     }
 }
 .zakas-product.product-style-2 .product-image {
@@ -5149,17 +5144,17 @@ textarea,
 .variation-form
     .product-color-variations
     .product-color-variation-btn.red:hover {
-    border-color: #e3bc9a;
+    border-color: #c2080f;
 }
 .variation-form
     .product-color-variations
     .product-color-variation-btn.red:after {
-    background-color: #e3bc9a;
+    background-color: #c2080f;
 }
 .variation-form
     .product-color-variations
     .product-color-variation-btn.red.selected {
-    border-color: #e3bc9a;
+    border-color: #c2080f;
 }
 .variation-form
     .product-color-variations
@@ -5555,7 +5550,7 @@ textarea,
     }
 }
 .social__link i {
-    background-color: #1561b7;
+    background-color: #c2080f;
     width: 38px;
     height: 24px;
     font-size: 14px;
@@ -5566,13 +5561,13 @@ textarea,
     background-color: #1561b7;
 }
 .social__link.google-plus i {
-    background-color: #1561b7;
+    background-color: #c2080f;
 }
 .social__link.pinterest i {
-    background-color: #1561b7;
+    background-color: #c2080f;
 }
 .social__link.twitter i {
-    background-color: #1561b7;
+    background-color: #4696f0;
 }
 .social-2 .social__item {
     display: inline-block;
@@ -6155,7 +6150,7 @@ textarea,
 }
 
 .instagram-item:hover .instagram-image::before {
-    border-color: #e3bc9a;
+    border-color: #c2080f;
     opacity: 0.5;
     visibility: visible;
 }
@@ -6799,7 +6794,7 @@ textarea,
 }
 
 .mailchimp-alerts .mailchimp-error {
-    color: #e3bc9a;
+    color: #c2080f;
 }
 
 .mailchimp-alerts .mailchimp-success {
@@ -7065,7 +7060,7 @@ textarea,
 .zakas-preloader .zakas-child {
     width: 20px;
     height: 20px;
-    background-color: #e3bc9a;
+    background-color: #c2080f;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: zakas-bouncedelay 1.4s ease-in-out 0s infinite both;
@@ -24038,7 +24033,7 @@ button,
 .method-box-2 i,
 .message-box a:hover,
 .error h1 {
-    color: #e3bc9a;
+    color: #c2080f;
 }
 
 .header-toolbar__btn.mini-cart-btn .mini-cart-count,
@@ -24059,14 +24054,14 @@ button,
 .tab-style-1 .nav-link.active,
 .user-dashboard-tab__head .nav-link.active,
 .user-dashboard-tab__head .nav-link:hover {
-    background-color: #e3bc9a;
+    background-color: #c2080f;
 }
 
 .nav-hover-2 .slick-btn:hover,
 .nav-hover-2 .accordion-slider__btn:hover,
 .nav-hover-2 .accordion-click-slider__btn:hover,
 .comment .reply:hover {
-    border-color: #e3bc9a;
+    border-color: #c2080f;
 }
 
 .product-title > a,
@@ -24216,7 +24211,7 @@ a,
 }
 
 .color--primary {
-    color: #e3bc9a;
+    color: #c2080f;
 }
 
 .color--light {
@@ -24272,5 +24267,5 @@ a,
 }
 
 .primary-bg {
-    background-color: #e3bc9a;
+    background-color: #c2080f;
 }

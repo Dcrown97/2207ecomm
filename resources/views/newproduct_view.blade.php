@@ -42,41 +42,21 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                             <figure class="product-gallery__image zoom">
-                                                <img src="../../zakas/assets/img/products/prod-9-1.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
+                                                <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
+                                                    alt="{{ $product->name }}">
                                             </figure>
-                                            <figure class="product-gallery__image zoom">
-                                                <img src="../../zakas/assets/img/products/prod-32.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
-                                            </figure>
-                                            <figure class="product-gallery__image zoom">
+                                            @foreach ($product->images as $image)
+                                                <figure class="product-gallery__image zoom">
+                                                    <img src="{{ asset('/img/products/' . $image->file_path) }}"
+                                                        alt="Product">
+                                                </figure>
+                                            @endforeach
+                                            {{-- <figure class="product-gallery__image zoom">
                                                 <img src="../../zakas/assets/img/products/prod-33.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
                                             </figure>
                                             <figure class="product-gallery__image zoom">
                                                 <img src="../../zakas/assets/img/products/prod-34.jpg" alt="Product">
-                                                <div class="product-gallery__actions">
-                                                    <button class="action-btn btn-zoom-popup"><i
-                                                            class="fa fa-eye"></i></button>
-                                                    <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                        class="action-btn video-popup"><i class="fa fa-play"></i></a>
-                                                </div>
-                                            </figure>
+                                            </figure> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -120,17 +100,20 @@
                                             }
                                         ]'>
                                         <figure class="product-gallery__nav-image--single">
-                                            <img src="../../zakas/assets/img/products/prod-9-1-170x195.jpg" alt="Products">
+                                            <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
+                                                alt="Products">
                                         </figure>
-                                        <figure class="product-gallery__nav-image--single">
-                                            <img src="../../zakas/assets/img/products/prod-32-170x195.jpg" alt="Products">
-                                        </figure>
-                                        <figure class="product-gallery__nav-image--single">
+                                        @foreach ($product->images as $image)
+                                            <figure class="product-gallery__nav-image--single">
+                                                <img src="{{ asset('/img/products/' . $image->file_path) }}" alt="Products">
+                                            </figure>
+                                        @endforeach
+                                        {{-- <figure class="product-gallery__nav-image--single">
                                             <img src="../../zakas/assets/img/products/prod-33-170x195.jpg" alt="Products">
                                         </figure>
                                         <figure class="product-gallery__nav-image--single">
                                             <img src="../../zakas/assets/img/products/prod-34-170x195.jpg" alt="Products">
-                                        </figure>
+                                        </figure> --}}
                                     </div>
                                 </div>
                             </div>
@@ -148,69 +131,68 @@
                                     <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                 </div>
                             </div>
-                            <h3 class="product-title mb--20">Black Blazer</h3>
-                            <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed suscipit arcu
-                                ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci.
-                                Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem
-                                laoreet, feugiat tellus at, hendrerit arcu.</p>
+                            <h3 class="product-title mb--20">{{ $product->name }}</h3>
+                            <p class="product-short-description mb--20">{!! $product->description !!}</p>
+
                             <div class="product-price-wrapper mb--25">
-                                <span class="money">$200.00</span>
-                                <span class="price-separator">-</span>
-                                <span class="money">$400.00</span>
+                                <span class="money" id="displayedPrice">
+
+                                </span>
                             </div>
                             <form action="#" class="variation-form mb--20">
                                 <div class="product-size-variations d-flex align-items-center mb--15">
                                     <p class="variation-label">Size:</p>
                                     <div class="product-size-variation variation-wrapper">
                                         <div class="variation">
-                                            <a class="product-size-variation-btn selected" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="S">
-                                                <span class="product-size-variation-label">S</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="M">
-                                                <span class="product-size-variation-label">M</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="L">
-                                                <span class="product-size-variation-label">L</span>
-                                            </a>
-                                        </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="XL">
-                                                <span class="product-size-variation-label">XL</span>
-                                            </a>
+                                            <select class="nice-select" name="size" id="sizeSelect"
+                                                onchange="updatePrice()">
+                                                <option value="">Select Size</option>
+                                                @foreach ($product->sizes->where('quantity', '>', 0) as $size)
+                                                    <option value="{{ $size->id }}"
+                                                        data-price-ngn="{{ number_format($size->cost_ngn, 2) }}"
+                                                        data-price-dol="{{ number_format($size->cost_dol, 2) }}"
+                                                        data-size="{{ $size->size }}">
+                                                        {{ $size->size }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="reset_variations">Clear</a>
                             </form>
+
+                            <div class="product-footer-meta mb--25">
+                                <p><span>Availibility:</span>
+                                    <a href="#"></span>
+                                        @if ($product->sizes->where('quantity', '>', '0')->isNotEmpty())
+                                            In Stock
+                                        @else
+                                            <span class="text-warning">Out Of Stock</span>
+                                        @endif
+                                    </a>
+                                </p>
+                                <p><span>Category:</span>
+                                    <a href="/shop?cat={{ $product->category->name }}">{{ $product->category->name }}</a>
+                                </p>
+                            </div>
                             <div
                                 class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                {{-- <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                     <label class="quantity-label" for="qty">Quantity:</label>
                                     <div class="quantity">
                                         <input type="number" class="quantity-input" name="qty" id="qty"
                                             value="1" min="1">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
-                                    onclick="window.location.href='cart.html'">
+                                    onclick="add_cart()">
                                     Add To Cart
                                 </button>
-                            </div>
-                            <div class="product-footer-meta">
-                                <p><span>Category:</span>
-                                    <a href="shop.html">Full Sweater</a>,
-                                    <a href="shop.html">SweatShirt</a>,
-                                    <a href="shop.html">Jacket</a>,
-                                    <a href="shop.html">Blazer</a>
-                                </p>
+                                <form id="add_cart_{{ $product->id }}" action="{{ route('cart.add') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="" class="prodSize" name="size" value="" id="prodSize">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -440,7 +422,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -507,7 +489,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -573,7 +555,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -640,7 +622,7 @@
                                                             </span>
                                                         </div>
                                                     </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <a href="/wishlist" class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -675,11 +657,69 @@
     <!-- Main Content Wrapper End -->
 
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Select the first size by default and update the price
+        const sizeSelect = document.getElementById('sizeSelect');
+        if (sizeSelect.options.length > 1) {
+            sizeSelect.selectedIndex = 1;
+            updatePrice();
+        }
+    });
+
+    function updatePrice() {
+        const sizeSelect = document.getElementById('sizeSelect');
+        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+        const displayedPrice = document.getElementById('displayedPrice');
+
+        if (selectedOption.value) {
+            const priceNGN = selectedOption.getAttribute('data-price-ngn');
+            const priceDOL = selectedOption.getAttribute('data-price-dol');
+            const prodSize = selectedOption.getAttribute('data-size');
+            const currency = '{{ session('currency') }}'; // Fetch the currency from session
+            document.getElementById('prodSize').value = prodSize;
+
+            if (currency === 'Naira') {
+                displayedPrice.innerHTML = `₦${priceNGN}`;
+            } else {
+                displayedPrice.innerHTML = `$${priceDOL}`;
+            }
+        } else {
+            displayedPrice.innerHTML = ''; // Clear price if no size selected
+        }
+    }
+
+    function add_cart() {
+        event.preventDefault();
+        var product = '{{ $product->name }}';
+        var size = document.getElementById('prodSize').value;
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('cart.add') }}',
+            data: {
+                product: product,
+                size: size,
+                _token: '{{ csrf_token() }}',
+                _method: 'POST'
+            },
+            _method: 'POST',
+            '_token': '{{ csrf_token() }}',
+            success: function(data) {
+                alert('Product added to cart')
+            }
+        });
+    }
+</script>
+
 
 @section('script')
     <script src="{{ asset('/frontend/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('/js/showmoreless.js') }}"></script>
     <script type="text/javascript">
+        $('#sizeSelect').on('change', function() {
+            let sizeSelect = $(this).val();
+        });
+
         (function($) {
             $('.product-image-thumb').on('click', function() {
                 var image_element = $(this).find('img')
@@ -695,26 +735,7 @@
 
         })(jQuery)
         // $(document).ready(function() {
-        function add_cart() {
-            event.preventDefault();
-            var product = '{{ $product->name }}';
-            var size = $('.show.active > input:hidden.size').val();
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('cart.add') }}',
-                data: {
-                    product: product,
-                    size: size,
-                    _token: '{{ csrf_token() }}',
-                    _method: 'POST'
-                },
-                _method: 'POST',
-                '_token': '{{ csrf_token() }}',
-                success: function(data) {
-                    alert('Product added to cart')
-                }
-            });
-        }
+
         // });
     </script>
 @endsection

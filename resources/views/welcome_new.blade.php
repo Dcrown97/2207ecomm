@@ -30,10 +30,53 @@
             <div class="zakas-element-carousel homepage-slider nav-style-2 nav-vertical-center nav-space-100"
                 data-slick-options='{
                     "autoplay": true
-                }' style="background-color: black">
+                }'
+                style="background-color: #E3BC9A">
                 <div class="item">
+                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
+                        style="background-image: url({{ asset('/img/CROPPED3.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-8">
+                                    <div class="slider-content text-center">
+                                        <h1 class="heading__primary color--white mb--30">
+                                            <span class="heading__primary--sub" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
+                                            <span class="heading__primary--main" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
+                                        </h1>
+                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
+                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="item">
                     <div class="single-slide slider-height-2  d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/hero-bgT2.png') }}); ">
+                        style="background-image: url({{ asset('/img/CROPPED1.png') }}); ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-8">
+                                    <div class="slider-content text-center">
+                                        <h1 class="heading__primary color--white mb--30">
+                                            <span class="heading__primary--sub" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
+                                            <span class="heading__primary--main" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
+                                        </h1>
+                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
+                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="item">
+                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
+                        style="background-image: url({{ asset('/img/hero-bgT2.png') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -54,7 +97,28 @@
                 </div>
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/hero-bgT3.png') }});">
+                        style="background-image: url({{ asset('/img/CROPPED4.png') }});">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-8">
+                                    <div class="slider-content text-center">
+                                        <h1 class="heading__primary color--white mb--30">
+                                            <span class="heading__primary--sub" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
+                                            <span class="heading__primary--main" data-animation="fadeInUp"
+                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
+                                        </h1>
+                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
+                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
+                        style="background-image: url({{ asset('/img/CROPPED5.png') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -146,43 +210,6 @@
         </div>
         <!-- Banner Area End -->
 
-        <!-- Method area Start -->
-        <section class="method-area mb--100 mb-sm--50">
-            <div class="container">
-                <div class="row gutter-75 gutter-xl-30">
-                    <div class="col-md-3 mb-sm--50">
-                        <div class="method-box-2 text-center pt--35 pb--30">
-                            <h4>Fastest Delivery</h4>
-                            <p>We deliver quickly to your door step with no issue</p>
-                            <i class="flaticon flaticon-paper-plane"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-sm--50">
-                        <div class="method-box-2 text-center pt--35 pb--30">
-                            <h4>Quality Guaranteed</h4>
-                            <p>With us you are guaranteed the highest quality</p>
-                            <i class="flaticon flaticon-present"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-sm--50">
-                        <div class="method-box-2 text-center pt--35 pb--30">
-                            <h4>24/7 Support</h4>
-                            <p>Our staff are available to provide support anytime</p>
-                            <i class="flaticon flaticon-two-circling-arrows"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-sm--50">
-                        <div class="method-box-2 text-center pt--35 pb--30">
-                            <h4>Secure Payment</h4>
-                            <p>All payments on our platforms are secure</p>
-                            <i class="flaticon flaticon-paper-plane"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Method area End -->
-
         <!-- Product Area Start -->
         <section class="product-area mb--100 mb-sm--50">
             <div class="container">
@@ -199,7 +226,7 @@
                         @foreach ($latestProducts as $product)
                             <div class="col-md-6 mb-sm--50">
                                 <div class="zakas-product product-style-2 h-100">
-                                    <div class="product-inner h-100">
+                                    <div class="product-inner">
                                         <figure class="product-image">
                                             <a href="{{ route('product.view', $product->name) }}">
                                                 <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
@@ -209,6 +236,7 @@
                                         <div class="product-info">
                                             <div class="zakas-product-action mb--25">
                                                 <div class="product-action d-flex justify-content-center">
+<<<<<<< HEAD
                                                     <select name="size" id="size{{ $count }}">
                                                         <option value="">Select Size</option>
                                                         @foreach ($product->sizes as $size)
@@ -224,9 +252,28 @@
                                                     </select>
                                                     <a onclick="addToWishlist('{{ $product->name }}')"
                                                         class="action-btn">
+=======
+                                                    <div class="product-size">
+                                                        <a href="#" class="action-btn">
+                                                            <span class="current">XL</span>
+                                                        </a>
+                                                        <div class="product-size-swatch">
+                                                            <span class="product-size-swatch-btn variation-btn">
+                                                                L
+                                                            </span>
+                                                            <span class="product-size-swatch-btn variation-btn">
+                                                                M
+                                                            </span>
+                                                            <span class="product-size-swatch-btn variation-btn">
+                                                                S
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <a href="/wishlist" class="action-btn">
+>>>>>>> b44a91f2c67e92c01ab92e2b065c4505846f4d87
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
-                                                    <a data-bs-toggle="modal" data-bs-target="#productModal"
+                                                    <a href="{{ route('product.view', $product->name) }}"
                                                         class="action-btn quick-view">
                                                         <i class="flaticon flaticon-eye"></i>
                                                     </a>
@@ -328,8 +375,8 @@
                     <div class="col-12">
                         <div class="product-tab tab-style-2 tab-style-2-1">
                             <div class="nav nav-tabs product-tab__head mb--50" id="product-tab" role="tablist">
-                                @if (isset($categories))
-                                    @foreach ($categories as $index => $cats)
+                                @if (isset($allcategories))
+                                    @foreach ($allcategories as $index => $cats)
                                         <button type="button"
                                             class="nav-item nav-link product-tab__link @if ($index === 0) active @endif"
                                             id="nav-new-tab" data-bs-toggle="tab"
@@ -341,13 +388,20 @@
                                 @endif
                             </div>
                             <div class="tab-content" id="new-arrival-tab-content">
-                                @if (isset($categories))
-                                    @foreach ($categories as $index => $cat)
+                                @if (isset($allcategories))
+                                    @foreach ($allcategories as $index => $cat)
                                         <div class="tab-pane fade show  @if ($index === 0) active @endif"
                                             id="tab-{{ $index + 1 }}" role="tabpanel" aria-labelledby="nav-new-tab">
                                             <div class="row">
+<<<<<<< HEAD
                                                 @php($count = 1)
                                                 @foreach ($cat->products as $product)
+=======
+                                                @php
+                                                    $products = $cat->products()->latest()->take(8)->get();
+                                                @endphp
+                                                @foreach ($products as $product)
+>>>>>>> b44a91f2c67e92c01ab92e2b065c4505846f4d87
                                                     <div class="col-xl-3 col-lg-4 col-sm-6 mb--50">
                                                         <div class="zakas-product">
                                                             <div class="product-inner">
@@ -357,6 +411,7 @@
                                                                             alt="{{ $product->name }}">
                                                                     </a>
                                                                     <div class="zakas-product-action">
+<<<<<<< HEAD
 
 
                                                                         <div class="d-flex justify-content-center">
@@ -379,6 +434,49 @@
                                                                             </select>
                                                                             <a onclick="addToWishlist('{{ $product->name }}')"
                                                                                 class="action-btn">
+=======
+                                                                        <div class="product-action d-flex">
+                                                                            <div class="product-size">
+                                                                                <a href="#" class="action-btn">
+                                                                                    <span class="current">XL</span>
+                                                                                </a>
+                                                                                <div class="product-size-swatch">
+                                                                                    <span
+                                                                                        class="product-size-swatch-btn variation-btn">
+                                                                                        L
+                                                                                    </span>
+                                                                                    <span
+                                                                                        class="product-size-swatch-btn variation-btn">
+                                                                                        M
+                                                                                    </span>
+                                                                                    <span
+                                                                                        class="product-size-swatch-btn variation-btn">
+                                                                                        S
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="product-color">
+                                                                                <a href="#" class="action-btn">
+                                                                                    <span
+                                                                                        class="current abbey">Abbey</span>
+                                                                                </a>
+                                                                                <div class="product-color-swatch">
+                                                                                    <span
+                                                                                        class="product-color-swatch-btn blue variation-btn">
+                                                                                        Blue
+                                                                                    </span>
+                                                                                    <span
+                                                                                        class="product-color-swatch-btn copper variation-btn">
+                                                                                        Copper
+                                                                                    </span>
+                                                                                    <span
+                                                                                        class="product-color-swatch-btn old-rose variation-btn">
+                                                                                        Old Rose
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <a href="/wishlist" class="action-btn">
+>>>>>>> b44a91f2c67e92c01ab92e2b065c4505846f4d87
                                                                                 <i class="flaticon flaticon-like"></i>
                                                                             </a>
                                                                             <a data-bs-toggle="modal"
@@ -430,7 +528,7 @@
         <!-- Product Tab Area End -->
 
         <!-- Instagram Area Start -->
-        <section class="instagram-area">
+        <section class="instagram-area mb--100 mb-sm--50">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
@@ -460,6 +558,43 @@
             </div>
         </section>
         <!-- Instagram Area End -->
+
+        <!-- Method area Start -->
+        <section class="method-area mb--100 mb-sm--50">
+            <div class="container">
+                <div class="row gutter-75 gutter-xl-30">
+                    <div class="col-md-3 mb-sm--50">
+                        <div class="method-box-2 text-center pt--35 pb--30">
+                            <h4>Fastest Delivery</h4>
+                            <p>We deliver quickly to your door step with no issue</p>
+                            <i class="flaticon flaticon-paper-plane"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-sm--50">
+                        <div class="method-box-2 text-center pt--35 pb--30">
+                            <h4>Quality Guaranteed</h4>
+                            <p>With us you are guaranteed the highest quality</p>
+                            <i class="flaticon flaticon-present"></i>
+                        </div>
+                    </div>
+                    {{-- <div class="col-md-3 mb-sm--50">
+                        <div class="method-box-2 text-center pt--35 pb--30">
+                            <h4>24/7 Support</h4>
+                            <p>Our staff are available to provide support anytime</p>
+                            <i class="flaticon flaticon-two-circling-arrows"></i>
+                        </div>
+                    </div> --}}
+                    <div class="col-md-3 mb-sm--50">
+                        <div class="method-box-2 text-center pt--35 pb--30">
+                            <h4>Secure Payment</h4>
+                            <p>All payments on our platforms are secure</p>
+                            <i class="flaticon flaticon-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Method area End -->
 
     </div>
     <!-- Main Content Wrapper End -->
