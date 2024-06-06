@@ -194,6 +194,8 @@
                 </div>
                 <div class="row">
                     @if (!empty($latestProducts))
+                        {{-- {{ dd($latestProducts) }} --}}
+                        @php($count = 1)
                         @foreach ($latestProducts as $product)
                             <div class="col-md-6 mb-sm--50">
                                 <div class="zakas-product product-style-2 h-100">
@@ -207,39 +209,21 @@
                                         <div class="product-info">
                                             <div class="zakas-product-action mb--25">
                                                 <div class="product-action d-flex justify-content-center">
-                                                    <div class="product-size">
-                                                        <a href="#" class="action-btn">
-                                                            <span class="current">XL</span>
-                                                        </a>
-                                                        <div class="product-size-swatch">
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                L
-                                                            </span>
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                M
-                                                            </span>
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                S
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="product-color">
-                                                        <a href="#" class="action-btn">
-                                                            <span class="current abbey">Abbey</span>
-                                                        </a>
-                                                        <div class="product-color-swatch">
-                                                            <span class="product-color-swatch-btn blue variation-btn">
-                                                                Blue
-                                                            </span>
-                                                            <span class="product-color-swatch-btn copper variation-btn">
-                                                                Copper
-                                                            </span>
-                                                            <span class="product-color-swatch-btn old-rose variation-btn">
-                                                                Old Rose
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <a href="wishlist.html" class="action-btn">
+                                                    <select name="size" id="size{{ $count }}">
+                                                        <option value="">Select Size</option>
+                                                        @foreach ($product->sizes as $size)
+                                                            <option value="{{ $size->id }}">Size:
+                                                                {{ $size->size . $size->measure }}; Price:
+                                                                @if (session('currency') == 'Naira')
+                                                                    ₦{{ number_format($size->cost_ngn, 2) }}
+                                                                @else
+                                                                    ${{ number_format($size->cost_dol) }}
+                                                                @endif
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <a onclick="addToWishlist('{{ $product->name }}')"
+                                                        class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a data-bs-toggle="modal" data-bs-target="#productModal"
@@ -252,19 +236,27 @@
                                                 <a
                                                     href="{{ route('product.view', $product->name) }}">{{ $product->name }}</a>
                                             </h3>
-                                            <div class="product-price-wrapper mb--30">
-                                                <span class="money">$80</span>
-                                                <span class="money-separator">-</span>
-                                                <span class="money">$200</span>
+                                            <div class="product-price-wrapper mb--30" style="color: white">
+                                                @if ($product->sizes->isNotEmpty())
+                                                    @if (session('currency') == 'Naira')
+                                                        ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
+                                                    @else
+                                                        ${{ number_format($product->sizes[0]->cost_dol) }}
+                                                    @endif
+                                                @endif
                                             </div>
-                                            <a href="/cart" class="btn btn-small btn-bg-sand btn-color-dark">Add
-                                                To
-                                                Cart</a>
+                                            <input type="hidden" name="product" id="product{{ $count }}"
+                                                value="{{ $product->name }}">
+                                            <a onclick="addToCart('product{{ $count }}', 'size{{ $count }}', 'pop-show', {{ $count }})"
+                                                class="btn btn-small btn-bg-sand btn-color-dark">
+                                                Add To Cart
+                                            </a>
                                         </div>
                                         <span class="product-badge">Hot</span>
                                     </div>
                                 </div>
                             </div>
+                            <?php $count++; ?>
                         @endforeach
                     @endif
                 </div>
@@ -354,6 +346,7 @@
                                         <div class="tab-pane fade show  @if ($index === 0) active @endif"
                                             id="tab-{{ $index + 1 }}" role="tabpanel" aria-labelledby="nav-new-tab">
                                             <div class="row">
+                                                @php($count = 1)
                                                 @foreach ($cat->products as $product)
                                                     <div class="col-xl-3 col-lg-4 col-sm-6 mb--50">
                                                         <div class="zakas-product">
@@ -364,47 +357,28 @@
                                                                             alt="{{ $product->name }}">
                                                                     </a>
                                                                     <div class="zakas-product-action">
-                                                                        <div class="product-action d-flex">
-                                                                            <div class="product-size">
-                                                                                <a href="#" class="action-btn">
-                                                                                    <span class="current">XL</span>
-                                                                                </a>
-                                                                                <div class="product-size-swatch">
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        L
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        M
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        S
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="product-color">
-                                                                                <a href="#" class="action-btn">
-                                                                                    <span
-                                                                                        class="current abbey">Abbey</span>
-                                                                                </a>
-                                                                                <div class="product-color-swatch">
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn blue variation-btn">
-                                                                                        Blue
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn copper variation-btn">
-                                                                                        Copper
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn old-rose variation-btn">
-                                                                                        Old Rose
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <a href="wishlist.html" class="action-btn">
+
+
+                                                                        <div class="d-flex justify-content-center">
+                                                                            <select name="sizes"
+                                                                                id="size2{{ $count }}"
+                                                                                style="width: 150px">
+                                                                                <option value="">Select Size</option>
+                                                                                @foreach ($product->sizes as $size)
+                                                                                    <option value="{{ $size->id }}">
+                                                                                        Size:
+                                                                                        {{ $size->size . $size->measure }};
+                                                                                        Price:
+                                                                                        @if (session('currency') == 'Naira')
+                                                                                            ₦{{ number_format($size->cost_ngn, 2) }}
+                                                                                        @else
+                                                                                            ${{ number_format($size->cost_dol) }}
+                                                                                        @endif
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            <a onclick="addToWishlist('{{ $product->name }}')"
+                                                                                class="action-btn">
                                                                                 <i class="flaticon flaticon-like"></i>
                                                                             </a>
                                                                             <a data-bs-toggle="modal"
@@ -413,6 +387,7 @@
                                                                                 <i class="flaticon flaticon-eye"></i>
                                                                             </a>
                                                                         </div>
+
                                                                     </div>
                                                                 </figure>
                                                                 <div class="product-info">
@@ -422,21 +397,25 @@
                                                                     </h3>
                                                                     <div class="product-price-wrapper mb--30">
                                                                         @if ($product->sizes->isNotEmpty())
-                                                                            <span class="money">
-                                                                                ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}</span>
-                                                                            <span class="money-separator">-</span>
-                                                                            <span class="money">
-                                                                                ${{ number_format($product->sizes[0]->cost_dol) }}</span>
+                                                                            @if (session('currency') == 'Naira')
+                                                                                ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
+                                                                            @else
+                                                                                ${{ number_format($product->sizes[0]->cost_dol) }}
+                                                                            @endif
                                                                         @endif
                                                                     </div>
-                                                                    <a href="/cart"
-                                                                        class="btn btn-small btn-bg-sand btn-color-dark">Add
-                                                                        To
-                                                                        Cart</a>
+                                                                    <input type="hidden" name="product2"
+                                                                        id="product2{{ $count }}"
+                                                                        value="{{ $product->name }}">
+                                                                    <a onclick="addToCart('product2{{ $count }}', 'size2{{ $count }}', 'pop-show', {{ $count }})"
+                                                                        class="btn btn-small btn-bg-sand btn-color-dark">
+                                                                        Add To Cart
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <?php $count++; ?>
                                                 @endforeach
                                             </div>
                                         </div>

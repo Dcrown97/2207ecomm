@@ -50,7 +50,7 @@ class FrontController extends Controller
         //            } else {
         //                $images = $all->random(count($all));
         //            }
-
+        // dd(session()->get('cart'));
         return view('welcome_new', ['cats' => $latest, 'latestProducts' => $latestProducts, 'images' => $images, 'categories' => $categories]);
     }
 
@@ -115,7 +115,7 @@ class FrontController extends Controller
                 }
             }
         }
-        return view('newcart', ['carts' => $carts, 'locs' => $locs]);
+        return view('cart', ['carts' => $carts, 'locs' => $locs]);
     }
 
     public function checkout(Request $request)
@@ -178,12 +178,14 @@ class FrontController extends Controller
                     $wishList->user_id = $request->user_id;
                     $wishList->product_id = $product->id;
                     $wishList->save();
+                    return response()->json(['status' => 'success']);
                 } else {
                     if ($request->session()->has('wish')) {
                         $wish = $request->session()->get('wish');
                         if (in_array($product->id, $wish)) return back();
                     }
                     Session::push('wish', $product->id);
+                    return response()->json(['status' => 'success']);
                 }
             }
         }
@@ -248,6 +250,29 @@ class FrontController extends Controller
             }
         }
         return back();
+    }
+
+    public function getCartCount()
+    {
+        if (Auth::check()) {
+            $count = Auth::user()->carts->count();
+        } else {
+            $count = Session::has('cart') ? count(Session::get('cart')) : 0;
+        }
+
+        return response()->json(['count' => $count]);
+    }
+
+
+    public function getWishlistCount()
+    {
+        if (Auth::check()) {
+            $count = Auth::user()->wishlists->count();
+        } else {
+            $count = Session::has('wish') ? count(Session::get('wish')) : 0;
+        }
+
+        return response()->json(['count' => $count]);
     }
 
     public function view_product($id = null)

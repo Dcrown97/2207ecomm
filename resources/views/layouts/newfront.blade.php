@@ -21,6 +21,8 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="./zakas/assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </head>
 
@@ -89,14 +91,29 @@
                         <div class="col-xl-2 col-lg-3 col-9 text-end">
                             <ul class="header-toolbar white-color">
                                 <li class="header-toolbar__item">
-                                    <a href="wishlist.html" class="header-toolbar__btn">
-                                        <i class="flaticon flaticon-like"></i>
+                                    <a href="/wishlist" class="header-toolbar__btn">
+                                        <i id="flaticon-like" class="flaticon flaticon-like"></i>
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item mini-cart-item">
-                                    <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
+                                    {{-- <a href="#miniCart" class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                         <i class="flaticon flaticon-shopping-cart"></i>
                                         <sup class="mini-cart-count">2</sup>
+                                    </a> --}}
+                                    <a href="/cart" onclick="window.location='/cart' " class="header-toolbar__btn toolbar-btn mini-cart-btn">
+                                        <i class="flaticon flaticon-shopping-cart"></i>
+                                       @if (Auth::check())
+                                        @if (\Illuminate\Support\Facades\Auth::user()->carts->isNotEmpty())
+                                           <sup id="mini-cart-count" class="mini-cart-count">{{ Auth::user()->carts->count() }}</sup>
+                                        @endif
+                                    @else
+                                        @if (\Illuminate\Support\Facades\Session::has('cart'))
+                                        <sup id="mini-cart-count" class="mini-cart-count">{{count(Session::get('cart')) }}</sup>
+                                        @else
+                                        <sup id="mini-cart-count" class="mini-cart-count">0</sup>
+                                        @endif
+                                    @endif
+                                        
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item user-info">
@@ -108,13 +125,13 @@
                                             <a href="my-account.html">My Account</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html">Shopping Cart</a>
+                                            <a href="/cart">Shopping Cart</a>
                                         </li>
                                         <li>
                                             <a href="checkout.html">Check Out</a>
                                         </li>
                                         <li>
-                                            <a href="wishlist.html">Wishlist</a>
+                                            <a href="/wishlist">Wishlist</a>
                                         </li>
                                         <li>
                                             <a href="order-tracking.html">Order tracking</a>
@@ -126,7 +143,8 @@
                                 </li>
                                 <li class="header-toolbar__item">
                                     <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
-                                        <i class="flaticon flaticon-search"></i>
+                                        {{-- <i class="flaticon flaticon-search"></i> --}}
+                                       <i class="fa fa-money"></i>
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item d-lg-none">
@@ -146,6 +164,27 @@
             </div>
         </header>
         <!-- Header End -->
+
+        <!-- Searchform Popup Start -->
+        <div class="searchform__popup" id="searchForm">
+            <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
+            <div class="searchform__body">
+                <form class="searchform">
+                    <ul class="currency-list">
+                        <li>Select Currency</li>
+                        <hr>
+                        <hr>
+                        <li @if (session('currency') == 'Naira') class="active" @endif><a
+                                href="{{ route('currency', 'ngn') }}" style="color: blue">Nigerian Niara (NGN)</a>
+                        </li>
+                        <hr>
+                        <li @if (session('currency') != 'Naira') class="active" @endif><a
+                                href="{{ route('currency', 'dol') }}" style="color: blue">US DOLLARS (USD)</a></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <!-- Searchform Popup End -->
 
         @include('partials.success')
         @include('partials.errors')
@@ -238,6 +277,143 @@
     <script src="./zakas/assets/js/vendor.js"></script>
     <!-- Main JS -->
     <script src="./zakas/assets/js/main.js"></script>
+
+    <script type="text/javascript">
+    updateWishlistCount();
+        function ajax() {
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('pop') }}',
+                complete: function(response) {
+                    if (response.status === 200) {
+                        $('#toast_alert').html(response.responseJSON.html).show();
+                        setTimeout(function() {
+                            $("#toast_alert").hide();
+                        }, 10000);
+                    }
+                }
+            });
+        };
+
+        var ajax_call = ajax();
+
+        var interval = 1000 * 60; // where X is your every X minutes
+
+        setInterval(ajax, 60000);
+        $(window).load(function() {
+            ajax();
+        });
+
+        function toastAlert(text, type = 'success') {
+            let backgroundColor;
+            let className;
+
+            switch (type) {
+                case 'success':
+                    backgroundColor = 'linear-gradient(to right, #00b09b, #96c93d)';
+                    className = 'success';
+                    break;
+                case 'error':
+                    backgroundColor = 'linear-gradient(to right, #ff5f6d, #ffc371)';
+                    className = 'error';
+                    break;
+                case 'warning':
+                    backgroundColor = 'linear-gradient(to right, #f6d365, #fda085)';
+                    className = 'warning';
+                    break;
+                default:
+                    backgroundColor = 'linear-gradient(to right, #00b09b, #96c93d)';
+                    className = 'success';
+            }
+
+            Toastify({
+                text: `${text}`,
+                className: className,
+                style: {
+                    background: backgroundColor,
+                }
+            }).showToast();
+        }
+
+
+        function addToCart(productId, sizeId, popoverClass, count) {
+            event.preventDefault();
+            $(`.${popoverClass}${count}`).popover('hide');
+
+            var product = document.getElementById(productId).value;
+            var size = document.getElementById(sizeId).value;
+
+            if (!size) {
+                toastAlert('Error adding product to cart, Please select a size', 'error');
+                return;
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('cart.add') }}',
+                data: {
+                    product: product,
+                    size: size,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(data) {
+                    toastAlert('Product added to cart', 'success');
+                    updateCartCount();
+                }
+            });
+        }
+
+
+function updateCartCount() {
+    $.ajax({
+        type: 'GET',
+        url: '{{ route('cart.count') }}',
+        success: function(data) {
+            $('#mini-cart-count').text(data.count);
+        },
+        error: function() {
+            console.error('Failed to update cart count');
+        }
+    });
+}
+
+    function updateWishlistCount() {
+        $.ajax({
+            type: 'GET',
+            url: '{{ route('wishlist.count') }}',
+            success: function(data) {
+                var wishlistIcon = $('#flaticon-like');
+                if (data.count > 0) {
+                    wishlistIcon.addClass('text-danger');
+                } else {
+                    wishlistIcon.removeClass('text-danger');
+                }
+            },
+            error: function() {
+                console.error('Failed to update wishlist count');
+            }
+        });
+    }
+
+
+        function addToWishlist(productName) {
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('wishlist.add') }}',
+                data: {
+                    product: productName,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(data) {
+                    updateWishlistCount()
+                    toastAlert('Product added to wishlist', 'success');
+                },
+                error: function(error) {
+                    toastAlert('Failed to add product to wishlist', 'error');
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

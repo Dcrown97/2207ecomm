@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -139,3 +140,5 @@ Route::prefix('admin')->group(function () {
     });
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/cart/count', [FrontController::class, 'getCartCount'])->name('cart.count');
+Route::get('/wishlist/count', [FrontController::class, 'getWishlistCount'])->name('wishlist.count');

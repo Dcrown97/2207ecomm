@@ -24,6 +24,7 @@
     <!-- Breadcrumb area End -->
 
     <!-- Main Content Wrapper Start -->
+    {{-- {{ dd($carts[0]) }} --}}
     <div class="main-content-wrapper">
         <div class="page-content-inner ptb--80">
             <div class="container">
@@ -45,22 +46,56 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="product-remove text-start"><a href="#"><i
-                                                                class="flaticon flaticon-cross"></i></a></td>
+                                                  @php($w = 1)
+                                @php($total = 0)
+                                <script type="text/javascript">
+                                    var total = 0;
+                                    let cart = [];
+                                </script>
+                                                 <?php $cur = session('currency') == 'Naira' ? '₦' : '$'; ?>
+                                                 
+                                                @forelse ($carts as $item)
+                                                <script type="text/javascript">
+                                        total += parseFloat('{{ session('currency') == 'Naira' ? $item->cost_ngn : $item->cost_dol }}')
+                                        cart.push({
+                                            id: {{ $item->id }},
+                                            quantity: 1,
+                                            loc: ''
+                                        });
+                                    </script>
+                                                    <tr>
+                                                    <td class="product-remove text-start">
+                                                         <a type="button" class="btn btn-xs text-danger" title="remove item from list"
+                                                onclick="var result = confirm('Are you very sure you want to remove this Item from the cart?');
+                                        if(result){
+                                        event.preventDefault();
+                                        document.getElementById('delete-cart{{ $item }}').submit();
+                                        }
+                                        ">
+                                                <small>X</small>
+                                            </a>
+                                            <form id="delete-cart{{ $item }}" action="{{ route('delete.cart') }}"
+                                                method="post" style="display:none;">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="_method" value="delete">
+                                                <input type="hidden" name="size" value="{{ $item->id }}">
+                                            </form>
+                                                            </td>
                                                     <td class="product-thumbnail text-start">
-                                                        <img src="./zakas/assets/img/products/prod-10-70x88.jpg"
-                                                            alt="Product Thumnail">
+                                                        <img src="{{ asset('/img/products/' . $item->product->images[0]->file_path) }}"
+                                                        width="50px" alt="">
                                                     </td>
                                                     <td class="product-name text-start wide-column">
                                                         <h3>
-                                                            <a href="product-details.html">Super skinny blazer</a>
+                                                            <a href="product-details.html">{{ $item->product->name }}</a>
                                                         </h3>
                                                     </td>
                                                     <td class="product-price">
-                                                        <span class="product-price-wrapper">
-                                                            <span class="money">$49.00</span>
-                                                        </span>
+                                                        @if (session('currency') == 'Naira')
+                                                    {{ $cur }}{{ number_format($item->cost_ngn, 2) }}
+                                                @else
+                                                    {{ $cur }}{{ number_format($item->cost_dol) }}
+                                                @endif
                                                     </td>
                                                     <td class="product-quantity">
                                                         <div class="quantity">
@@ -74,6 +109,10 @@
                                                         </span>
                                                     </td>
                                                 </tr>
+                                                @empty
+                                                    <tr>No Products</tr>
+                                                    <?php $w++; ?>
+                                                @endforelse
                                             </tbody>
                                         </table>
                                     </div>
@@ -89,7 +128,7 @@
                                 </div>
                                 <div class="col-sm-6 text-sm-end">
                                     <button type="submit" class="cart-form__btn">Clear Cart</button>
-                                    <button type="submit" class="cart-form__btn">Update Cart</button>
+                                    <a href="/shop" type="submit" class="cart-form__btn">Update Cart</a>
                                 </div>
                             </div>
                         </form>

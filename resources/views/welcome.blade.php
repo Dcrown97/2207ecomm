@@ -283,7 +283,8 @@
                                                                 _method: 'POST',
                                                                 '_token': '{{ csrf_token() }}',
                                                                 success: function( data ) {
-                                                                    alert('Product added to cart')
+                                                                    toatAlert('Prodctu')
+                                                                
                                                                 }
                                                             });
                                                         "><span
