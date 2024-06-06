@@ -31,7 +31,7 @@
                 data-slick-options='{
                     "autoplay": true
                 }'
-                style="background-color: #E3BC9A">
+                style="background-color: gray">
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
                         style="background-image: url({{ asset('/img/CROPPED3.png') }});">
@@ -224,7 +224,7 @@
                         {{-- {{ dd($latestProducts) }} --}}
                         @php($count = 1)
                         @foreach ($latestProducts as $product)
-                            <div class="col-md-6 mb-sm--50">
+                            <div class="col-sm-6 mb-sm--50">
                                 <div class="zakas-product product-style-2 h-100">
                                     <div class="product-inner">
                                         <figure class="product-image">
@@ -236,8 +236,7 @@
                                         <div class="product-info">
                                             <div class="zakas-product-action mb--25">
                                                 <div class="product-action d-flex justify-content-center">
-<<<<<<< HEAD
-                                                    <select name="size" id="size{{ $count }}">
+                                                    <select name="size" id="size{{ $count }}" style="width: 150px">
                                                         <option value="">Select Size</option>
                                                         @foreach ($product->sizes as $size)
                                                             <option value="{{ $size->id }}">Size:
@@ -252,25 +251,6 @@
                                                     </select>
                                                     <a onclick="addToWishlist('{{ $product->name }}')"
                                                         class="action-btn">
-=======
-                                                    <div class="product-size">
-                                                        <a href="#" class="action-btn">
-                                                            <span class="current">XL</span>
-                                                        </a>
-                                                        <div class="product-size-swatch">
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                L
-                                                            </span>
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                M
-                                                            </span>
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                S
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <a href="/wishlist" class="action-btn">
->>>>>>> b44a91f2c67e92c01ab92e2b065c4505846f4d87
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a href="{{ route('product.view', $product->name) }}"
@@ -393,15 +373,8 @@
                                         <div class="tab-pane fade show  @if ($index === 0) active @endif"
                                             id="tab-{{ $index + 1 }}" role="tabpanel" aria-labelledby="nav-new-tab">
                                             <div class="row">
-<<<<<<< HEAD
                                                 @php($count = 1)
                                                 @foreach ($cat->products as $product)
-=======
-                                                @php
-                                                    $products = $cat->products()->latest()->take(8)->get();
-                                                @endphp
-                                                @foreach ($products as $product)
->>>>>>> b44a91f2c67e92c01ab92e2b065c4505846f4d87
                                                     <div class="col-xl-3 col-lg-4 col-sm-6 mb--50">
                                                         <div class="zakas-product">
                                                             <div class="product-inner">
@@ -411,7 +384,6 @@
                                                                             alt="{{ $product->name }}">
                                                                     </a>
                                                                     <div class="zakas-product-action">
-<<<<<<< HEAD
 
 
                                                                         <div class="d-flex justify-content-center">
@@ -434,49 +406,6 @@
                                                                             </select>
                                                                             <a onclick="addToWishlist('{{ $product->name }}')"
                                                                                 class="action-btn">
-=======
-                                                                        <div class="product-action d-flex">
-                                                                            <div class="product-size">
-                                                                                <a href="#" class="action-btn">
-                                                                                    <span class="current">XL</span>
-                                                                                </a>
-                                                                                <div class="product-size-swatch">
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        L
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        M
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        S
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="product-color">
-                                                                                <a href="#" class="action-btn">
-                                                                                    <span
-                                                                                        class="current abbey">Abbey</span>
-                                                                                </a>
-                                                                                <div class="product-color-swatch">
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn blue variation-btn">
-                                                                                        Blue
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn copper variation-btn">
-                                                                                        Copper
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn old-rose variation-btn">
-                                                                                        Old Rose
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <a href="/wishlist" class="action-btn">
->>>>>>> b44a91f2c67e92c01ab92e2b065c4505846f4d87
                                                                                 <i class="flaticon flaticon-like"></i>
                                                                             </a>
                                                                             <a data-bs-toggle="modal"

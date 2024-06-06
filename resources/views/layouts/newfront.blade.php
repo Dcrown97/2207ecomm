@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="{{ asset('/img/tbally-logo.png') }}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{ asset('/img/tbally-logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('/img/bytbally.jpeg') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ asset('/img/bytbally.jpeg') }}">
 
     <!-- ************************* CSS Files ************************* -->
 
@@ -50,11 +50,11 @@
                                 <div class="site-branding">
                                     <a href="/" class="logo">
                                         <figure class="logo--transparent">
-                                            <img src="{{ asset('/img/tbally-logo.png') }}" class="d-none d-lg-block"
-                                                style="height: 40px" alt="Logo">
+                                            <img src="{{ asset('/img/bytbally.jpeg') }}" class="d-none d-lg-block"
+                                                style="height: 40px; border-radius:10px; margin:10px" alt="Logo">
                                         </figure>
                                         <figure class="logo--normal">
-                                            <img src="{{ asset('/img/tbally-logo.png') }}" class="d-none d-lg-block"
+                                            <img src="{{ asset('/img/bytbally.jpeg') }}" class="d-none d-lg-block"
                                                 style="height: 40px" alt="Logo">
                                         </figure>
                                     </a>
@@ -101,42 +101,27 @@
                                             <a href="shop.html" class="mainmenu__link">
                                                 <span class="mm-text">Shop</span>
                                             </a>
-                                            <ul class="megamenu">
+                                            <ul class="megamenu col-lg-12 row" style="width: 90rem">
                                                 @if ($allcategories->isNotEmpty())
-                                                    @foreach ($allcategories as $cat)
-                                                        <li>
+                                                        @foreach ($allcategories as $cat)
+                                                            <li class="col-lg-3 menu-item-has-children">
                                                             <a class="megamenu-title" href="#">
                                                                 <span class="mm-text">{{ $cat->name }}</span>
                                                             </a>
                                                             <ul>
-                                                                <li>
+                                                                @foreach ($cat->products as $product)
+                                                                    <li>
                                                                     <a href="shop-fullwidth.html">
-                                                                        <span class="mm-text">Full Width</span>
+                                                                        <span class="mm-text">{{ $product->name }}</span>
                                                                     </a>
                                                                 </li>
-                                                                <li>
-                                                                    <a href="shop.html">
-                                                                        <span class="mm-text">Left Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-right-sidebar.html">
-                                                                        <span class="mm-text">Right Sidebar</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-three-columns.html">
-                                                                        <span class="mm-text">Three Columns</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="shop-four-columns.html">
-                                                                        <span class="mm-text">Four Columns</span>
-                                                                    </a>
-                                                                </li>
+                                                                @endforeach
                                                             </ul>
+                                                        <hr>
                                                         </li>
+                                                        {{-- </div> --}}
                                                     @endforeach
+                                                    {{-- </div> --}}
                                                 @endif
                                                 {{-- <li>
                                                     <a class="megamenu-title" href="#">
@@ -387,7 +372,7 @@
                         <div class="col-lg-9 text-center">
                             <div class="footer-widget mb--50">
                                 <div class="textwidget">
-                                    <img src="{{ asset('/img/tbally-logo.png') }}" alt="Logo">
+                                    <img height="20%" src="{{ asset('/img/bytbally.jpeg') }}" alt="Logo">
                                 </div>
                             </div>
                             <div class="footer-widget mb--50 pb--1">

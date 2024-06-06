@@ -38,7 +38,10 @@ class FrontController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at', 'desc')->take(3)->get();
-        $allcategories = Category::get();
+        // $allcategories = Category::get();
+        $allcategories = Category::with(['products' => function ($query) {
+            $query->latest()->take(5);
+        }])->get();
         $latest = [];
         $latestProducts = Product::with('category', 'images', 'sizes')->latest()->take(2)->get();
         // dd($latestProducts);
@@ -51,7 +54,6 @@ class FrontController extends Controller
         //            } else {
         //                $images = $all->random(count($all));
         //            }
-
         return view('welcome_new', ['cats' => $latest, 'latestProducts' => $latestProducts, 'images' => $images, 'categories' => $categories, 'allcategories' => $allcategories]);
     }
 
