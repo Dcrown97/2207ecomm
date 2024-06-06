@@ -133,81 +133,38 @@
                             </div>
                             <h3 class="product-title mb--20">{{ $product->name }}</h3>
                             <p class="product-short-description mb--20">{!! $product->description !!}</p>
-                            <?php $i = 1; ?>
-                            @foreach ($product->sizes->where('quantity', '>', 0) as $size)
-                                <div class="product-price-wrapper mb--25 tab-pane fade @if ($i == 1) show active @endif"
-                                    id="value{{ $size->id }}" role="tabpanel"
-                                    aria-labelledby="vert-tabs-right-home-tab{{ $size->id }}">
-                                    <span class="money">
-                                        @if (session('currency') == 'Naira')
-                                            ₦{{ number_format($size->cost_ngn, 2) }}
-                                        @else
-                                            ${{ number_format($size->cost_dol) }}
-                                        @endif
-                                    </span>
-                                    <input type="hidden" class="size" id="product{{ $i }}"
-                                        value="{{ $size->id }}">
-                                    {{-- <span class="price-separator">-</span>
-                                    <span class="money">$400.00</span> --}}
-                                </div>
-                                <?php $i++; ?>
-                            @endforeach
+
+                            <div class="product-price-wrapper mb--25">
+                                <span class="money" id="displayedPrice">
+
+                                </span>
+                            </div>
                             <form action="#" class="variation-form mb--20">
                                 <div class="product-size-variations d-flex align-items-center mb--15">
                                     <p class="variation-label">Size:</p>
                                     <div class="product-size-variation variation-wrapper">
-                                        <?php $w = 1; ?>
-                                        @foreach ($product->sizes->where('quantity', '>', 0) as $size)
-                                            <div class="variation">
-                                                <a class="product-size-variation-btn selected" id="size{{ $size->id }}"
-                                                    data-toggle="pill" href="#value{{ $size->id }}" role="tab"
-                                                    aria-controls="tabs-home-{{ $size->id }}"
-                                                    @if ($w == 1) aria-selected="true" @else aria-selected="false" @endif>
-                                                    <span
-                                                        class="product-size-variation-label">{{ $size->size }}{{ $size->measure }}</span>
-                                                </a>
-                                            </div>
-                                            <?php $w++; ?>
-                                        @endforeach
-                                        {{-- <div class="variation">
-                                            <a class="product-size-variation-btn" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="M">
-                                                <span class="product-size-variation-label">M</span>
-                                            </a>
-                                        </div>
                                         <div class="variation">
-                                            <a class="product-size-variation-btn" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="L">
-                                                <span class="product-size-variation-label">L</span>
-                                            </a>
+                                            <select class="nice-select" name="size" id="sizeSelect"
+                                                onchange="updatePrice()">
+                                                <option value="">Select Size</option>
+                                                @foreach ($product->sizes->where('quantity', '>', 0) as $size)
+                                                    <option value="{{ $size->id }}"
+                                                        data-price-ngn="{{ number_format($size->cost_ngn, 2) }}"
+                                                        data-price-dol="{{ number_format($size->cost_dol, 2) }}"
+                                                        data-size="{{ $size->size }}">
+                                                        {{ $size->size }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <div class="variation">
-                                            <a class="product-size-variation-btn" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="XL">
-                                                <span class="product-size-variation-label">XL</span>
-                                            </a>
-                                        </div> --}}
                                     </div>
                                 </div>
-                                <a href="#" class="reset_variations">Clear</a>
                             </form>
-                            <div
-                                class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                    <label class="quantity-label" for="qty">Quantity:</label>
-                                    <div class="quantity">
-                                        <input type="number" class="quantity-input" name="qty" id="qty"
-                                            value="1" min="1">
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
-                                    onclick="window.location.href='cart.html'">
-                                    Add To Cart
-                                </button>
-                            </div>
-                            <div class="product-footer-meta">
+
+                            <div class="product-footer-meta mb--25">
                                 <p><span>Availibility:</span>
-                                    <a href="#"></span> : @if ($product->sizes->where('quantity', '>', '0')->isNotEmpty())
+                                    <a href="#"></span>
+                                        @if ($product->sizes->where('quantity', '>', '0')->isNotEmpty())
                                             In Stock
                                         @else
                                             <span class="text-warning">Out Of Stock</span>
@@ -217,6 +174,25 @@
                                 <p><span>Category:</span>
                                     <a href="/shop?cat={{ $product->category->name }}">{{ $product->category->name }}</a>
                                 </p>
+                            </div>
+                            <div
+                                class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+                                {{-- <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                    <label class="quantity-label" for="qty">Quantity:</label>
+                                    <div class="quantity">
+                                        <input type="number" class="quantity-input" name="qty" id="qty"
+                                            value="1" min="1">
+                                    </div>
+                                </div> --}}
+                                <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
+                                    onclick="add_cart()">
+                                    Add To Cart
+                                </button>
+                                <form id="add_cart_{{ $product->id }}" action="{{ route('cart.add') }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="" class="prodSize" name="size" value="" id="prodSize">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -681,11 +657,69 @@
     <!-- Main Content Wrapper End -->
 
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Select the first size by default and update the price
+        const sizeSelect = document.getElementById('sizeSelect');
+        if (sizeSelect.options.length > 1) {
+            sizeSelect.selectedIndex = 1;
+            updatePrice();
+        }
+    });
+
+    function updatePrice() {
+        const sizeSelect = document.getElementById('sizeSelect');
+        const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+        const displayedPrice = document.getElementById('displayedPrice');
+
+        if (selectedOption.value) {
+            const priceNGN = selectedOption.getAttribute('data-price-ngn');
+            const priceDOL = selectedOption.getAttribute('data-price-dol');
+            const prodSize = selectedOption.getAttribute('data-size');
+            const currency = '{{ session('currency') }}'; // Fetch the currency from session
+            document.getElementById('prodSize').value = prodSize;
+
+            if (currency === 'Naira') {
+                displayedPrice.innerHTML = `₦${priceNGN}`;
+            } else {
+                displayedPrice.innerHTML = `$${priceDOL}`;
+            }
+        } else {
+            displayedPrice.innerHTML = ''; // Clear price if no size selected
+        }
+    }
+
+    function add_cart() {
+        event.preventDefault();
+        var product = '{{ $product->name }}';
+        var size = document.getElementById('prodSize').value;
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('cart.add') }}',
+            data: {
+                product: product,
+                size: size,
+                _token: '{{ csrf_token() }}',
+                _method: 'POST'
+            },
+            _method: 'POST',
+            '_token': '{{ csrf_token() }}',
+            success: function(data) {
+                alert('Product added to cart')
+            }
+        });
+    }
+</script>
+
 
 @section('script')
     <script src="{{ asset('/frontend/js/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('/js/showmoreless.js') }}"></script>
     <script type="text/javascript">
+        $('#sizeSelect').on('change', function() {
+            let sizeSelect = $(this).val();
+        });
+
         (function($) {
             $('.product-image-thumb').on('click', function() {
                 var image_element = $(this).find('img')
@@ -701,26 +735,7 @@
 
         })(jQuery)
         // $(document).ready(function() {
-        function add_cart() {
-            event.preventDefault();
-            var product = '{{ $product->name }}';
-            var size = $('.show.active > input:hidden.size').val();
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('cart.add') }}',
-                data: {
-                    product: product,
-                    size: size,
-                    _token: '{{ csrf_token() }}',
-                    _method: 'POST'
-                },
-                _method: 'POST',
-                '_token': '{{ csrf_token() }}',
-                success: function(data) {
-                    alert('Product added to cart')
-                }
-            });
-        }
+
         // });
     </script>
 @endsection

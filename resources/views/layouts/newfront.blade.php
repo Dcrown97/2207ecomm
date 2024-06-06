@@ -46,41 +46,230 @@
                         <div class="col-xl-10 col-lg-9 col-3">
                             <nav class="main-navigation">
                                 <div class="site-branding">
-                                    <a href="index.html" class="logo">
+                                    <a href="/" class="logo">
                                         <figure class="logo--transparent">
-                                            <img src="{{ asset('/img/tbally-logo.png') }}" alt="Logo">
+                                            <img src="{{ asset('/img/tbally-logo.png') }}" class="d-none d-lg-block"
+                                                style="height: 40px" alt="Logo">
                                         </figure>
                                         <figure class="logo--normal">
-                                            <img src="{{ asset('/img/tbally-logo.png') }}" alt="Logo">
+                                            <img src="{{ asset('/img/tbally-logo.png') }}" class="d-none d-lg-block"
+                                                style="height: 40px" alt="Logo">
                                         </figure>
                                     </a>
                                 </div>
                                 <div class="mainmenu-nav d-none d-lg-block">
                                     <ul class="mainmenu white-color">
-                                        <li class="mainmenu__item menu-item-has-children active">
-                                            <a href="/" class="mainmenu__link">
-                                                <span class="mm-text">Home</span>
-                                            </a>
-                                        </li>
                                         <li class="mainmenu__item menu-item-has-children">
                                             <a href="{{ route('shop') }}" class="mainmenu__link">
+                                                <span class="mm-text">Shop All</span>
+                                            </a>
+                                        </li>
+                                        {{-- @if ($allcategories->isNotEmpty())
+                                            @foreach ($allcategories as $cat)
+                                                <li class="mainmenu__item menu-item-has-children">
+                                                    <a href="/shop?cat={{ $cat->name }}" class="mainmenu__link">
+                                                        <span class="mm-text">{{ $cat->name }}</span>
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        @endif --}}
+
+                                        {{-- <li class="mainmenu__item menu-item-has-children active">
+                                            <a href="index.html" class="mainmenu__link">
+                                                <span class="mm-text">Product Categories</span>
+                                            </a>
+                                            <ul class="megamenu two-column">
+                                                <li>
+                                                    <ul>
+                                                        @if ($allcategories->isNotEmpty())
+                                                            @foreach ($allcategories as $cat)
+                                                                <li>
+                                                                    <a href="/shop?cat={{ $cat->name }}">
+                                                                        <span class="mm-text">{{ $cat->name }}</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li> --}}
+
+                                        <li class="mainmenu__item menu-item-has-children">
+                                            <a href="shop.html" class="mainmenu__link">
                                                 <span class="mm-text">Shop</span>
                                             </a>
+                                            <ul class="megamenu">
+                                                @if ($allcategories->isNotEmpty())
+                                                    @foreach ($allcategories as $cat)
+                                                        <li>
+                                                            <a class="megamenu-title" href="#">
+                                                                <span class="mm-text">{{ $cat->name }}</span>
+                                                            </a>
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="shop-fullwidth.html">
+                                                                        <span class="mm-text">Full Width</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="shop.html">
+                                                                        <span class="mm-text">Left Sidebar</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="shop-right-sidebar.html">
+                                                                        <span class="mm-text">Right Sidebar</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="shop-three-columns.html">
+                                                                        <span class="mm-text">Three Columns</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="shop-four-columns.html">
+                                                                        <span class="mm-text">Four Columns</span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                                {{-- <li>
+                                                    <a class="megamenu-title" href="#">
+                                                        <span class="mm-text">Shop List</span>
+                                                    </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="shop-list.html">
+                                                                <span class="mm-text">Full Width</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="shop-list-sidebar.html">
+                                                                <span class="mm-text">Left Sidebar</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="shop-list-right-sidebar.html">
+                                                                <span class="mm-text">Right Sidebar</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a class="megamenu-title" href="#">
+                                                        <span class="mm-text">Product Details</span>
+                                                    </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="product-details.html">
+                                                                <span class="mm-text">Tab Style 1</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-tab-style-2.html">
+                                                                <span class="mm-text">Tab Style 2</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-tab-style-3.html">
+                                                                <span class="mm-text">Tab Style 3</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-gallery-left.html">
+                                                                <span class="mm-text">Gallery Left</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-gallery-right.html">
+                                                                <span class="mm-text">Gallery Right</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-sticky-left.html">
+                                                                <span class="mm-text">Sticky Left</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a class="megamenu-title" href="#">
+                                                        <span class="mm-text">Product Details</span>
+                                                    </a>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="product-details-sticky-right.html">
+                                                                <span class="mm-text">Sticky Right</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-slider-box.html">
+                                                                <span class="mm-text">Slider Box</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-slider-full-width.html">
+                                                                <span class="mm-text">Slider Box Full Width</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-affiliate.html">
+                                                                <span class="mm-text">Affiliate Proudct</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-variable.html">
+                                                                <span class="mm-text">Variable Proudct</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="product-details-group.html">
+                                                                <span class="mm-text">Group Product</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li> --}}
+                                            </ul>
                                         </li>
+
                                         <li class="mainmenu__item menu-item-has-children">
-                                            <a href="{{ route('story') }}" class="mainmenu__link">
-                                                <span class="mm-text">Our Story</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item menu-item-has-children">
-                                            <a href="{{ route('login') }}" class="mainmenu__link">
-                                                <span class="mm-text">Sign In</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item">
                                             <a href="/contact" class="mainmenu__link">
-                                                <span class="mm-text">Contact</span>
+                                                <span class="mm-text">Custom Outfit</span>
                                             </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children">
+                                            <a href="#" class="mainmenu__link">
+                                                <span class="mm-text">Sales</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children active">
+                                            <a href="index.html" class="mainmenu__link">
+                                                <span class="mm-text">Information & Help</span>
+                                            </a>
+                                            <ul class="megamenu two-column">
+                                                <li>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="mm-text">Appointment and services </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/contact">
+                                                                <span class="mm-text">Customer Service </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ route('story') }}">
+                                                                <span class="mm-text">About us </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </div>
@@ -105,22 +294,13 @@
                                     </a>
                                     <ul class="user-info-menu">
                                         <li>
-                                            <a href="my-account.html">My Account</a>
+                                            <a href="#">My Account</a>
                                         </li>
                                         <li>
-                                            <a href="cart.html">Shopping Cart</a>
-                                        </li>
-                                        <li>
-                                            <a href="checkout.html">Check Out</a>
+                                            <a href="{{ route('login') }}">Sign In</a>
                                         </li>
                                         <li>
                                             <a href="wishlist.html">Wishlist</a>
-                                        </li>
-                                        <li>
-                                            <a href="order-tracking.html">Order tracking</a>
-                                        </li>
-                                        <li>
-                                            <a href="compare.html">compare</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -221,11 +401,11 @@
                                     LTD</a>
                             </p>
                         </div>
-                        <div class="col-sm-6 text-sm-end text-center">
+                        {{-- <div class="col-sm-6 text-sm-end text-center">
                             <figure>
                                 <img src="./zakas/assets/img/others/payment.png" alt="payment">
                             </figure>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -46,41 +46,81 @@
                         <div class="col-xl-10 col-lg-9 col-3">
                             <nav class="main-navigation">
                                 <div class="site-branding">
-                                    <a href="index.html" class="logo">
+                                    <a href="/" class="logo">
                                         <figure class="logo--transparent">
-                                            <img src="{{ asset('/img/tbally-logo.png') }}" alt="Logo">
+                                            <img src="{{ asset('/img/tbally-logo.png') }}" style="height: 40px"
+                                                alt="Logo">
                                         </figure>
                                         <figure class="logo--normal">
-                                            <img src="{{ asset('/img/tbally-logo.png') }}" alt="Logo">
+                                            <img src="{{ asset('/img/tbally-logo.png') }}" class="d-none d-lg-block"
+                                                style="height: 40px" alt="Logo">
                                         </figure>
                                     </a>
                                 </div>
                                 <div class="mainmenu-nav d-none d-lg-block">
                                     <ul class="mainmenu">
-                                        <li class="mainmenu__item menu-item-has-children active">
-                                            <a href="/" class="mainmenu__link">
-                                                <span class="mm-text">Home</span>
-                                            </a>
-                                        </li>
                                         <li class="mainmenu__item menu-item-has-children">
                                             <a href="{{ route('shop') }}" class="mainmenu__link">
-                                                <span class="mm-text">Shop</span>
+                                                <span class="mm-text">Shop All</span>
                                             </a>
                                         </li>
+
                                         <li class="mainmenu__item menu-item-has-children">
-                                            <a href="{{ route('story') }}" class="mainmenu__link">
-                                                <span class="mm-text">Our Story</span>
+                                            <a href="index.html" class="mainmenu__link">
+                                                <span class="mm-text">Product Categories</span>
                                             </a>
+                                            <ul class="megamenu two-column">
+                                                <li>
+                                                    <ul>
+                                                        @if ($cats->isNotEmpty())
+                                                            @foreach ($cats as $cat)
+                                                                <li>
+                                                                    <a href="/shop?cat={{ $cat->name }}">
+                                                                        <span class="mm-text">{{ $cat->name }}</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        @endif
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </li>
+
                                         <li class="mainmenu__item menu-item-has-children">
-                                            <a href="{{ route('login') }}" class="mainmenu__link">
-                                                <span class="mm-text">Sign In</span>
-                                            </a>
-                                        </li>
-                                        <li class="mainmenu__item">
                                             <a href="/contact" class="mainmenu__link">
-                                                <span class="mm-text">Contact</span>
+                                                <span class="mm-text">Custom Outfit</span>
                                             </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children">
+                                            <a href="#" class="mainmenu__link">
+                                                <span class="mm-text">Sales</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children">
+                                            <a href="index.html" class="mainmenu__link">
+                                                <span class="mm-text">Information & Help</span>
+                                            </a>
+                                            <ul class="megamenu two-column">
+                                                <li>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="mm-text">Appointment and services </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="/contact">
+                                                                <span class="mm-text">Customer Service </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ route('story') }}">
+                                                                <span class="mm-text">About us </span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </li>
                                     </ul>
                                 </div>

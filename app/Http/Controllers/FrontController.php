@@ -37,7 +37,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('created_at', 'desc')->take(3)->get();
+        $allcategories = Category::get();
         $latest = [];
         $latestProducts = Product::with('category', 'images', 'sizes')->latest()->take(2)->get();
         // dd($latestProducts);
@@ -51,7 +52,7 @@ class FrontController extends Controller
         //                $images = $all->random(count($all));
         //            }
 
-        return view('welcome_new', ['cats' => $latest, 'latestProducts' => $latestProducts, 'images' => $images, 'categories' => $categories]);
+        return view('welcome_new', ['cats' => $latest, 'latestProducts' => $latestProducts, 'images' => $images, 'categories' => $categories, 'allcategories' => $allcategories]);
     }
 
     public function shop(Request $request)
@@ -68,6 +69,8 @@ class FrontController extends Controller
         if (isset($cat)) $products = Product::where('category_id', $cat->id)->where('posted', 1)->orderBy('created_at', $sort)->paginate($size);
         else $products = Product::where('posted', 1)->orderBy('created_at', $sort)->paginate($size);
         $cats = Category::all();
+        $categories = Category::orderBy('created_at', 'desc')->take(3)->get();
+
         $wishlist = [];
         if (Auth::user() != null) {
             $wish = WishList::where('user_id', Auth::user()->id)->get();
@@ -86,7 +89,7 @@ class FrontController extends Controller
                 }
             }
         }
-        return view('newproducts', ['cats' => $cats, 'category' => $cate, 'products' => $products, 'wishlist' => $wishlist]);
+        return view('newproducts', ['cats' => $cats, 'categories' => $categories, 'category' => $cate, 'products' => $products, 'wishlist' => $wishlist]);
     }
 
     public function cart(Request $request)
@@ -115,7 +118,7 @@ class FrontController extends Controller
                 }
             }
         }
-        return view('newcart', ['carts' => $carts, 'locs' => $locs]);
+        return view('cart', ['carts' => $carts, 'locs' => $locs]);
     }
 
     public function checkout(Request $request)
@@ -228,6 +231,8 @@ class FrontController extends Controller
 
     public function add_cart(Request $request)
     {
+        // $request->session()->flush();
+        // dd($request->all());
         $product = Product::where('name', $request->product)->first();
         if (null != $product && !empty($product->id)) {
             if (Auth::user() != null) {
@@ -245,11 +250,17 @@ class FrontController extends Controller
             } else {
                 if ($request->session()->has('cart')) {
                     $current_cart = $request->session()->get('cart');
+                    // dd($current_cart);
                     foreach ($current_cart as $cart) {
-                        if ($cart['size'] == $request->size && $cart['product'] == $product->id) return back();
+                        if ($cart['size'] == $product->size && $cart['product'] == $product->id) {
+                            $request->session()->push('cart', ['size' => $request->size, 'product' => $product->id]);
+                        }
                     }
+                    return back();
                 }
+
                 $request->session()->push('cart', ['size' => $request->size, 'product' => $product->id]);
+                // $request->session()->flush();
             }
         }
         return back();
