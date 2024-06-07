@@ -4716,13 +4716,14 @@ textarea,
 
 .product-info {
     text-align: center;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .product-title {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    margin-top: -10px;
 }
 
 .product-size-swatch {
@@ -4837,6 +4838,7 @@ textarea,
 }
 .zakas-product-action .action-btn {
     margin-right: 1px;
+    margin-bottom: 25px;
 }
 .zakas-product-action .product-action > *:nth-child(1) {
     transition-delay: 100ms;
@@ -5564,16 +5566,16 @@ textarea,
     color: #ffffff;
 }
 .social__link.facebook i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social__link.google-plus i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social__link.pinterest i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social__link.twitter i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social-2 .social__item {
     display: inline-block;
