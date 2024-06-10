@@ -155,7 +155,7 @@ img {
 }
 
 a:hover {
-    color: #e3bc9a;
+    color: gray;
     text-decoration: none;
 }
 
@@ -400,7 +400,7 @@ textarea,
 }
 
 .sticky-header .mobile-menu .mean-bar .mean-nav > ul {
-      background-color: #E3BC9A;
+      background-color: GRAY;
 }
 
 @media (min-width: 62em) {
@@ -1237,7 +1237,7 @@ textarea,
     color: #111111;
 }
 .single-post-details .entry-content a:hover {
-    color: #e3bc9a;
+    color: gray;
     text-decoration: underline;
 }
 .single-post-details .entry-content h1,
@@ -1304,10 +1304,10 @@ textarea,
         background-color: #4696f0;
     }
     .single-post .post-share .social .social__link.google-plus {
-        background-color: #e3bc9a;
+        background-color: gray;
     }
     .single-post .post-share .social .social__link.pinterest {
-        background-color: #e3bc9a;
+        background-color: gray;
     }
 }
 
@@ -1461,7 +1461,7 @@ textarea,
 /*-- 23.00 - Global Button --*/
 .btn {
     background-color: #ffffff;
-    color: #e3bc9a;
+    color: gray;
     font-size: 16px;
     min-width: 184px;
     min-height: 55px;
@@ -3406,7 +3406,7 @@ textarea,
     color: #4cbb6c;
 }
 .form__output.error {
-    color: #e3bc9a;
+    color: gray;
 }
 
 .form__fieldset {
@@ -4046,7 +4046,7 @@ textarea,
 
 @media (min-width: 62em) {
     .main-navigation .mainmenu__item.active > a {
-        color: #e3bc9a;
+        color: gray;
     }
 }
 
@@ -4114,13 +4114,13 @@ textarea,
         -ms-transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
         -o-transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
         transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
-        background-color: #e3bc9a;
+        background-color: gray;
     }
 }
 
 @media (min-width: 62em) {
     .main-navigation .mainmenu__item.menu-item-has-children > ul li a:hover {
-        color: #e3bc9a;
+        color: gray;
     }
 }
 
@@ -4275,7 +4275,7 @@ textarea,
         > ul.megamenu
         > li
         a.megamenu-title:hover {
-        color: #e3bc9a;
+        color: gray;
     }
 }
 
@@ -4288,7 +4288,7 @@ textarea,
         .mm-text:after {
         position: absolute;
         content: "";
-        background-color: #e3bc9a;
+        background-color: gray;
         width: 50%;
         height: 2px;
         bottom: -10px;
@@ -4494,11 +4494,11 @@ textarea,
     transform: rotate(-45deg);
 }
 .mobile-menu .mean-bar .mean-nav {
-    background-color: transparent;
+    background-color: white !important;
     margin-top: 0;
 }
 .mobile-menu .mean-bar .mean-nav > ul {
-    /* background-color: #E3BC9A; */
+    /* background-color: GRAY; */
     border: 1px solid #eeeeee;
     border-top: 0;
     overflow-x: hidden;
@@ -4527,6 +4527,7 @@ textarea,
     width: 100%;
     opacity: 1;
     font-family: "Poppins", sans-serif;
+    color: black !important; 
 }
 .mobile-menu .mean-bar .mean-nav > ul li ul {
     position: static;
@@ -4685,11 +4686,11 @@ textarea,
 }
 
 .offcanvas-navigation .offcanvas-menu li:hover > a {
-    color: #e3bc9a !important;
+    color: gray !important;
 }
 
 .offcanvas-navigation .offcanvas-menu li:hover > .menu-expand {
-    color: #e3bc9a !important;
+    color: gray !important;
 }
 
 /*****************************
@@ -4715,13 +4716,14 @@ textarea,
 
 .product-info {
     text-align: center;
-    padding-top: 25px;
+    padding-top: 15px;
 }
 
 .product-title {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    margin-top: -10px;
 }
 
 .product-size-swatch {
@@ -4836,6 +4838,7 @@ textarea,
 }
 .zakas-product-action .action-btn {
     margin-right: 1px;
+    margin-bottom: 25px;
 }
 .zakas-product-action .product-action > *:nth-child(1) {
     transition-delay: 100ms;
@@ -5149,17 +5152,17 @@ textarea,
 .variation-form
     .product-color-variations
     .product-color-variation-btn.red:hover {
-    border-color: #e3bc9a;
+    border-color: gray;
 }
 .variation-form
     .product-color-variations
     .product-color-variation-btn.red:after {
-    background-color: #e3bc9a;
+    background-color: gray;
 }
 .variation-form
     .product-color-variations
     .product-color-variation-btn.red.selected {
-    border-color: #e3bc9a;
+    border-color: gray;
 }
 .variation-form
     .product-color-variations
@@ -5563,16 +5566,16 @@ textarea,
     color: #ffffff;
 }
 .social__link.facebook i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social__link.google-plus i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social__link.pinterest i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social__link.twitter i {
-    background-color: #1561b7;
+    background-color: gray;
 }
 .social-2 .social__item {
     display: inline-block;
@@ -6155,7 +6158,7 @@ textarea,
 }
 
 .instagram-item:hover .instagram-image::before {
-    border-color: #e3bc9a;
+    border-color: gray;
     opacity: 0.5;
     visibility: visible;
 }
@@ -6799,7 +6802,7 @@ textarea,
 }
 
 .mailchimp-alerts .mailchimp-error {
-    color: #e3bc9a;
+    color: gray;
 }
 
 .mailchimp-alerts .mailchimp-success {
@@ -7065,7 +7068,7 @@ textarea,
 .zakas-preloader .zakas-child {
     width: 20px;
     height: 20px;
-    background-color: #e3bc9a;
+    background-color: gray;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: zakas-bouncedelay 1.4s ease-in-out 0s infinite both;
@@ -24038,7 +24041,7 @@ button,
 .method-box-2 i,
 .message-box a:hover,
 .error h1 {
-    color: #e3bc9a;
+    color: gray;
 }
 
 .header-toolbar__btn.mini-cart-btn .mini-cart-count,
@@ -24059,14 +24062,14 @@ button,
 .tab-style-1 .nav-link.active,
 .user-dashboard-tab__head .nav-link.active,
 .user-dashboard-tab__head .nav-link:hover {
-    background-color: #e3bc9a;
+    background-color: gray;
 }
 
 .nav-hover-2 .slick-btn:hover,
 .nav-hover-2 .accordion-slider__btn:hover,
 .nav-hover-2 .accordion-click-slider__btn:hover,
 .comment .reply:hover {
-    border-color: #e3bc9a;
+    border-color: gray;
 }
 
 .product-title > a,
@@ -24216,7 +24219,7 @@ a,
 }
 
 .color--primary {
-    color: #e3bc9a;
+    color: gray;
 }
 
 .color--light {
@@ -24272,5 +24275,5 @@ a,
 }
 
 .primary-bg {
-    background-color: #e3bc9a;
+    background-color: gray;
 }

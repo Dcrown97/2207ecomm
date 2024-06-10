@@ -31,7 +31,7 @@
                 data-slick-options='{
                     "autoplay": true
                 }'
-                style="background-color: #E3BC9A">
+                style="background-color: gray">
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
                         style="background-image: url({{ asset('/img/CROPPED3.png') }});">
@@ -221,8 +221,10 @@
                 </div>
                 <div class="row">
                     @if (!empty($latestProducts))
+                        {{-- {{ dd($latestProducts) }} --}}
+                        @php($count = 1)
                         @foreach ($latestProducts as $product)
-                            <div class="col-md-6 mb-sm--50">
+                            <div class="col-sm-6 mb-sm--50">
                                 <div class="zakas-product product-style-2 h-100">
                                     <div class="product-inner">
                                         <figure class="product-image">
@@ -234,23 +236,9 @@
                                         <div class="product-info">
                                             <div class="zakas-product-action mb--25">
                                                 <div class="product-action d-flex justify-content-center">
-                                                    <div class="product-size">
-                                                        <a href="#" class="action-btn">
-                                                            <span class="current">XL</span>
-                                                        </a>
-                                                        <div class="product-size-swatch">
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                L
-                                                            </span>
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                M
-                                                            </span>
-                                                            <span class="product-size-swatch-btn variation-btn">
-                                                                S
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                    <a href="/wishlist" class="action-btn">
+                                                  
+                                                    <a onclick="addToWishlist('{{ $product->name }}')"
+                                                        class="action-btn">
                                                         <i class="flaticon flaticon-like"></i>
                                                     </a>
                                                     <a href="{{ route('product.view', $product->name) }}"
@@ -258,24 +246,45 @@
                                                         <i class="flaticon flaticon-eye"></i>
                                                     </a>
                                                 </div>
+                                                  <select name="size" id="size{{ $count }}" style="width: 150px; border: 0.5px solid gray; border-radius: 5px">
+                                                        <option value="">Select Size</option>
+                                                        @foreach ($product->sizes as $size)
+                                                            <option value="{{ $size->id }}">Size:
+                                                                {{ $size->size . $size->measure }}; Price:
+                                                                @if (session('currency') == 'Naira')
+                                                                    ₦{{ number_format($size->cost_ngn, 2) }}
+                                                                @else
+                                                                    ${{ number_format($size->cost_dol) }}
+                                                                @endif
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
                                             </div>
                                             <h3 class="product-title mb--15">
                                                 <a
                                                     href="{{ route('product.view', $product->name) }}">{{ $product->name }}</a>
                                             </h3>
-                                            <div class="product-price-wrapper mb--30">
-                                                <span class="money">$80</span>
-                                                <span class="money-separator">-</span>
-                                                <span class="money">$200</span>
+                                            <div class="product-price-wrapper mb--30" style="color: white">
+                                                @if ($product->sizes->isNotEmpty())
+                                                    @if (session('currency') == 'Naira')
+                                                        ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
+                                                    @else
+                                                        ${{ number_format($product->sizes[0]->cost_dol) }}
+                                                    @endif
+                                                @endif
                                             </div>
-                                            <a href="/cart" class="btn btn-small btn-bg-sand btn-color-dark">Add
-                                                To
-                                                Cart</a>
+                                            <input type="hidden" name="product" id="product{{ $count }}"
+                                                value="{{ $product->name }}">
+                                            <a onclick="addToCart('product{{ $count }}', 'size{{ $count }}', 'pop-show', {{ $count }})"
+                                                class="btn btn-small btn-bg-sand btn-color-dark">
+                                                Add To Cart
+                                            </a>
                                         </div>
                                         <span class="product-badge">Hot</span>
                                     </div>
                                 </div>
                             </div>
+                            <?php $count++; ?>
                         @endforeach
                     @endif
                 </div>
@@ -341,7 +350,7 @@
         <!-- Banner Area End -->
 
         <!-- Product Tab Area Start -->
-        <section class="product-tab-area mb--40">
+        {{-- <section class="product-tab-area mb--40">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -365,10 +374,8 @@
                                         <div class="tab-pane fade show  @if ($index === 0) active @endif"
                                             id="tab-{{ $index + 1 }}" role="tabpanel" aria-labelledby="nav-new-tab">
                                             <div class="row">
-                                                @php
-                                                    $products = $cat->products()->latest()->take(8)->get();
-                                                @endphp
-                                                @foreach ($products as $product)
+                                                @php($count = 1)
+                                                @foreach ($cat->products as $product)
                                                     <div class="col-xl-3 col-lg-4 col-sm-6 mb--50">
                                                         <div class="zakas-product">
                                                             <div class="product-inner">
@@ -378,47 +385,28 @@
                                                                             alt="{{ $product->name }}">
                                                                     </a>
                                                                     <div class="zakas-product-action">
-                                                                        <div class="product-action d-flex">
-                                                                            <div class="product-size">
-                                                                                <a href="#" class="action-btn">
-                                                                                    <span class="current">XL</span>
-                                                                                </a>
-                                                                                <div class="product-size-swatch">
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        L
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        M
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-size-swatch-btn variation-btn">
-                                                                                        S
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="product-color">
-                                                                                <a href="#" class="action-btn">
-                                                                                    <span
-                                                                                        class="current abbey">Abbey</span>
-                                                                                </a>
-                                                                                <div class="product-color-swatch">
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn blue variation-btn">
-                                                                                        Blue
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn copper variation-btn">
-                                                                                        Copper
-                                                                                    </span>
-                                                                                    <span
-                                                                                        class="product-color-swatch-btn old-rose variation-btn">
-                                                                                        Old Rose
-                                                                                    </span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <a href="/wishlist" class="action-btn">
+
+
+                                                                        <div class="d-flex justify-content-center">
+                                                                            <select name="sizes"
+                                                                                id="size2{{ $count }}"
+                                                                                style="width: 150px">
+                                                                                <option value="">Select Size</option>
+                                                                                @foreach ($product->sizes as $size)
+                                                                                    <option value="{{ $size->id }}">
+                                                                                        Size:
+                                                                                        {{ $size->size . $size->measure }};
+                                                                                        Price:
+                                                                                        @if (session('currency') == 'Naira')
+                                                                                            ₦{{ number_format($size->cost_ngn, 2) }}
+                                                                                        @else
+                                                                                            ${{ number_format($size->cost_dol) }}
+                                                                                        @endif
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                            <a onclick="addToWishlist('{{ $product->name }}')"
+                                                                                class="action-btn">
                                                                                 <i class="flaticon flaticon-like"></i>
                                                                             </a>
                                                                             <a data-bs-toggle="modal"
@@ -427,6 +415,7 @@
                                                                                 <i class="flaticon flaticon-eye"></i>
                                                                             </a>
                                                                         </div>
+
                                                                     </div>
                                                                 </figure>
                                                                 <div class="product-info">
@@ -436,21 +425,25 @@
                                                                     </h3>
                                                                     <div class="product-price-wrapper mb--30">
                                                                         @if ($product->sizes->isNotEmpty())
-                                                                            <span class="money">
-                                                                                ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}</span>
-                                                                            <span class="money-separator">-</span>
-                                                                            <span class="money">
-                                                                                ${{ number_format($product->sizes[0]->cost_dol) }}</span>
+                                                                            @if (session('currency') == 'Naira')
+                                                                                ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
+                                                                            @else
+                                                                                ${{ number_format($product->sizes[0]->cost_dol) }}
+                                                                            @endif
                                                                         @endif
                                                                     </div>
-                                                                    <a href="/cart"
-                                                                        class="btn btn-small btn-bg-sand btn-color-dark">Add
-                                                                        To
-                                                                        Cart</a>
+                                                                    <input type="hidden" name="product2"
+                                                                        id="product2{{ $count }}"
+                                                                        value="{{ $product->name }}">
+                                                                    <a onclick="addToCart('product2{{ $count }}', 'size2{{ $count }}', 'pop-show', {{ $count }})"
+                                                                        class="btn btn-small btn-bg-sand btn-color-dark">
+                                                                        Add To Cart
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <?php $count++; ?>
                                                 @endforeach
                                             </div>
                                         </div>
@@ -461,7 +454,112 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
+
+        <!-- Product Tab Area Start -->
+<section class="product-tab-area mb--40">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product-tab tab-style-2 tab-style-2-1">
+                    <div class="nav nav-tabs product-tab__head mb--50" id="product-tab" role="tablist">
+                        @if (isset($allcategories))
+                            @foreach ($allcategories as $index => $cats)
+                                <button type="button"
+                                    class="nav-item nav-link product-tab__link @if ($index === 0) active @endif"
+                                    id="nav-new-tab" data-bs-toggle="tab"
+                                    data-bs-target="#tab-{{ $index + 1 }}" role="tab"
+                                    aria-controls="nav-new" aria-selected="true">
+                                    <span> {{ $cats->name }}</span>
+                                </button>
+                            @endforeach
+                        @endif
+                    </div>
+                    <div class="tab-content" id="new-arrival-tab-content">
+                        @if (isset($allcategories))
+                            @foreach ($allcategories as $index => $cat)
+                                <div class="tab-pane fade show  @if ($index === 0) active @endif"
+                                    id="tab-{{ $index + 1 }}" role="tabpanel" aria-labelledby="nav-new-tab">
+                                    <div class="row ">
+                                        @php($count = 1)
+                                        @foreach ($cat->products as $product)
+                                            <div class="col-xl-3 col-lg-4 col-sm-6 col-6 mb--50">
+                                                <div class="zakas-product">
+                                                    <div class="product-inner card p-3">
+                                                        <figure class="product-image">
+                                                            <a href="product-details.html">
+                                                                <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
+                                                                    alt="{{ $product->name }}">
+                                                            </a>
+                                                            <select class="form-select-input mt-2" name="sizes"
+                                                                id="size2{{ $count }}"
+                                                                style="width: 90%; margin-top: 50px; border: 0.5px solid gray; border-radius:5px">
+                                                                <option value="">Select Size</option>
+                                                                @foreach ($product->sizes as $size)
+                                                                    <option value="{{ $size->id }}">
+                                                                        Size:
+                                                                        {{ $size->size . $size->measure }};
+                                                                        Price:
+                                                                        @if (session('currency') == 'Naira')
+                                                                            ₦{{ number_format($size->cost_ngn, 2) }}
+                                                                        @else
+                                                                            ${{ number_format($size->cost_dol) }}
+                                                                        @endif
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                            <div class="zakas-product-action">
+                                                                <div class="d-flex justify-content-center">
+                                                                    <a onclick="addToWishlist('{{ $product->name }}')"
+                                                                        class="action-btn">
+                                                                        <i class="flaticon flaticon-like"></i>
+                                                                    </a>
+                                                                    <a data-bs-toggle="modal"
+                                                                        data-bs-target="#productModal"
+                                                                        class="action-btn quick-view">
+                                                                        <i class="flaticon flaticon-eye"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </figure>
+                                                        <div class="product-info">
+                                                            <h3 class="product-title mb--15">
+                                                                <a href="product-details.html">{{ $product->name }}</a>
+                                                            </h3>
+                                                            <div class="product-price-wrapper mb--30">
+                                                                @if ($product->sizes->isNotEmpty())
+                                                                    @if (session('currency') == 'Naira')
+                                                                        ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
+                                                                    @else
+                                                                        ${{ number_format($product->sizes[0]->cost_dol) }}
+                                                                    @endif
+                                                                @endif
+                                                            </div>
+                                                            <input type="hidden" name="product2"
+                                                                id="product2{{ $count }}"
+                                                                value="{{ $product->name }}">
+                                                            <a onclick="addToCart('product2{{ $count }}', 'size2{{ $count }}', 'pop-show', {{ $count }})"
+                                                                class="btn btn-small btn-bg-sand btn-color-dark">
+                                                                Add To Cart
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php $count++; ?>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Product Tab Area End -->
+
         <!-- Product Tab Area End -->
 
         <!-- Instagram Area Start -->

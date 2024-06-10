@@ -38,7 +38,10 @@ class FrontController extends Controller
     public function index()
     {
         $categories = Category::orderBy('created_at', 'desc')->take(3)->get();
-        $allcategories = Category::get();
+        // $allcategories = Category::get();
+        $allcategories = Category::with(['products' => function ($query) {
+            $query->latest()->take(5);
+        }])->get();
         $latest = [];
         $latestProducts = Product::with('category', 'images', 'sizes')->latest()->take(2)->get();
         // dd($latestProducts);
@@ -51,7 +54,6 @@ class FrontController extends Controller
         //            } else {
         //                $images = $all->random(count($all));
         //            }
-
         return view('welcome_new', ['cats' => $latest, 'latestProducts' => $latestProducts, 'images' => $images, 'categories' => $categories, 'allcategories' => $allcategories]);
     }
 
@@ -186,12 +188,14 @@ class FrontController extends Controller
                     $wishList->user_id = $request->user_id;
                     $wishList->product_id = $product->id;
                     $wishList->save();
+                    return response()->json(['status' => 'success']);
                 } else {
                     if ($request->session()->has('wish')) {
                         $wish = $request->session()->get('wish');
                         if (in_array($product->id, $wish)) return back();
                     }
                     Session::push('wish', $product->id);
+                    return response()->json(['status' => 'success']);
                 }
             }
         }
@@ -264,6 +268,29 @@ class FrontController extends Controller
             }
         }
         return back();
+    }
+
+    public function getCartCount()
+    {
+        if (Auth::check()) {
+            $count = Auth::user()->carts->count();
+        } else {
+            $count = Session::has('cart') ? count(Session::get('cart')) : 0;
+        }
+
+        return response()->json(['count' => $count]);
+    }
+
+
+    public function getWishlistCount()
+    {
+        if (Auth::check()) {
+            $count = Auth::user()->wishlists->count();
+        } else {
+            $count = Session::has('wish') ? count(Session::get('wish')) : 0;
+        }
+
+        return response()->json(['count' => $count]);
     }
 
     public function view_product($id = null)
