@@ -245,32 +245,30 @@
                                                 <span class="mm-text">Sales</span>
                                             </a>
                                         </li>
-                                        <li class="mainmenu__item menu-item-has-children active">
-                                            <a href="index.html" class="mainmenu__link">
+
+                                        <li class="mainmenu__item menu-item-has-children">
+                                            <a href="#" class="mainmenu__link">
                                                 <span class="mm-text">Information & Help</span>
                                             </a>
-                                            <ul class="megamenu two-column">
+                                            <ul class="sub-menu">
                                                 <li>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="#">
-                                                                <span class="mm-text">Appointment and services </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="/contact">
-                                                                <span class="mm-text">Customer Service </span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="{{ route('story') }}">
-                                                                <span class="mm-text">About us </span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                                    <a href="#">
+                                                        <span class="mm-text">Appointment and services </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="/contact">
+                                                        <span class="mm-text">Customer Service </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('story') }}">
+                                                        <span class="mm-text">About us </span>
+                                                    </a>
                                                 </li>
                                             </ul>
                                         </li>
+
                                     </ul>
                                 </div>
                             </nav>
