@@ -400,7 +400,7 @@ textarea,
 }
 
 .sticky-header .mobile-menu .mean-bar .mean-nav > ul {
-      background-color: GRAY;
+    background-color: GRAY;
 }
 
 @media (min-width: 62em) {
@@ -1512,7 +1512,7 @@ textarea,
     display: block;
 }
 .btn-small {
-    min-width: 147px;
+    min-width: 110px;
     min-height: 40px;
     line-height: 40px;
 }
@@ -4496,6 +4496,7 @@ textarea,
 .mobile-menu .mean-bar .mean-nav {
     background-color: white !important;
     margin-top: 0;
+    max-width: 260px;
 }
 .mobile-menu .mean-bar .mean-nav > ul {
     /* background-color: GRAY; */
@@ -4527,7 +4528,7 @@ textarea,
     width: 100%;
     opacity: 1;
     font-family: "Poppins", sans-serif;
-    color: black !important; 
+    color: black !important;
 }
 .mobile-menu .mean-bar .mean-nav > ul li ul {
     position: static;

@@ -24,6 +24,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+    <style>
+        @media (max-width: 767px) {
+            .mobile-style {
+                margin-left: 120px;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -103,21 +111,22 @@
                                             </a>
                                             <ul class="megamenu col-lg-12 row" style="width: 90rem">
                                                 @if ($allcategories->isNotEmpty())
-                                                        @foreach ($allcategories as $cat)
-                                                            <li class="col-lg-3 menu-item-has-children">
+                                                    @foreach ($allcategories as $cat)
+                                                        <li class="col-lg-3 menu-item-has-children">
                                                             <a class="megamenu-title" href="#">
                                                                 <span class="mm-text">{{ $cat->name }}</span>
                                                             </a>
                                                             <ul>
                                                                 @foreach ($cat->products as $product)
                                                                     <li>
-                                                                    <a href="shop-fullwidth.html">
-                                                                        <span class="mm-text">{{ $product->name }}</span>
-                                                                    </a>
-                                                                </li>
+                                                                        <a href="shop-fullwidth.html">
+                                                                            <span
+                                                                                class="mm-text">{{ $product->name }}</span>
+                                                                        </a>
+                                                                    </li>
                                                                 @endforeach
                                                             </ul>
-                                                        <hr>
+                                                            <hr>
                                                         </li>
                                                         {{-- </div> --}}
                                                     @endforeach
@@ -232,7 +241,6 @@
                                                 <span class="mm-text">Sales</span>
                                             </a>
                                         </li>
-
                                         <li class="mainmenu__item menu-item-has-children">
                                             <a href="#" class="mainmenu__link">
                                                 <span class="mm-text">Information & Help</span>
@@ -255,12 +263,11 @@
                                                 </li>
                                             </ul>
                                         </li>
-
                                     </ul>
                                 </div>
                             </nav>
                         </div>
-                        <div class="col-xl-2 col-lg-3 col-9 text-end">
+                        <div class="col-xl-2 col-lg-3 col-9 text-end mobile-style">
                             <ul class="header-toolbar white-color">
                                 <li class="header-toolbar__item">
                                     <a href="/wishlist" class="header-toolbar__btn">
@@ -272,20 +279,23 @@
                                         <i class="flaticon flaticon-shopping-cart"></i>
                                         <sup class="mini-cart-count">2</sup>
                                     </a> --}}
-                                    <a href="/cart" onclick="window.location='/cart' " class="header-toolbar__btn toolbar-btn mini-cart-btn">
+                                    <a href="/cart" onclick="window.location='/cart' "
+                                        class="header-toolbar__btn toolbar-btn mini-cart-btn">
                                         <i class="flaticon flaticon-shopping-cart"></i>
-                                       @if (Auth::check())
-                                        @if (\Illuminate\Support\Facades\Auth::user()->carts->isNotEmpty())
-                                           <sup id="mini-cart-count" class="mini-cart-count">{{ Auth::user()->carts->count() }}</sup>
-                                        @endif
-                                    @else
-                                        @if (\Illuminate\Support\Facades\Session::has('cart'))
-                                        <sup id="mini-cart-count" class="mini-cart-count">{{count(Session::get('cart')) }}</sup>
+                                        @if (Auth::check())
+                                            @if (\Illuminate\Support\Facades\Auth::user()->carts->isNotEmpty())
+                                                <sup id="mini-cart-count"
+                                                    class="mini-cart-count">{{ Auth::user()->carts->count() }}</sup>
+                                            @endif
                                         @else
-                                        <sup id="mini-cart-count" class="mini-cart-count">0</sup>
+                                            @if (\Illuminate\Support\Facades\Session::has('cart'))
+                                                <sup id="mini-cart-count"
+                                                    class="mini-cart-count">{{ count(Session::get('cart')) }}</sup>
+                                            @else
+                                                <sup id="mini-cart-count" class="mini-cart-count">0</sup>
+                                            @endif
                                         @endif
-                                    @endif
-                                        
+
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item user-info">
@@ -316,7 +326,13 @@
                                 <li class="header-toolbar__item">
                                     <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
                                         {{-- <i class="flaticon flaticon-search"></i> --}}
-                                       <i class="fa fa-money"></i>
+                                        @if (session('currency') == 'Naira')
+                                            {{-- <i class="fa fa-naira"></i> --}}
+                                            {{-- <i class="fa-solid fa-naira-sign"></i> --}}
+                                            <i class="fa fa-money"></i>
+                                        @else
+                                            <i class="fa fa-dollar"></i>
+                                        @endif
                                     </a>
                                 </li>
                                 <li class="header-toolbar__item d-lg-none">
@@ -388,28 +404,24 @@
                                     <li class="social__item">
                                         <a href="#" target="_blank" rel="noopener"
                                             class="social__link google-plus">
-                                            <span>Instagram</span>
                                             <i class="fa fa-instagram"></i>
                                         </a>
                                     </li>
                                     <li class="social__item">
                                         <a href="#" target="_blank" rel="noopener"
                                             class="social__link facebook">
-                                            <span>Facebook</span>
                                             <i class="fa fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li class="social__item">
                                         <a href="#" target="_blank" rel="noopener"
                                             class="social__link pinterest">
-                                            <span>LinkedIn</span>
                                             <i class="fa fa-linkedin"></i>
                                         </a>
                                     </li>
                                     <li class="social__item">
                                         <a href="#" target="_blank" rel="noopener"
                                             class="social__link twitter">
-                                            <span>twitter</span>
                                             <i class="fa fa-twitter"></i>
                                         </a>
                                     </li>
@@ -451,7 +463,8 @@
     <script src="./zakas/assets/js/main.js"></script>
 
     <script type="text/javascript">
-    updateWishlistCount();
+        updateWishlistCount();
+
         function ajax() {
             $.ajax({
                 type: 'GET',
@@ -536,36 +549,36 @@
         }
 
 
-function updateCartCount() {
-    $.ajax({
-        type: 'GET',
-        url: '{{ route('cart.count') }}',
-        success: function(data) {
-            $('#mini-cart-count').text(data.count);
-        },
-        error: function() {
-            console.error('Failed to update cart count');
-        }
-    });
-}
-
-    function updateWishlistCount() {
-        $.ajax({
-            type: 'GET',
-            url: '{{ route('wishlist.count') }}',
-            success: function(data) {
-                var wishlistIcon = $('#flaticon-like');
-                if (data.count > 0) {
-                    wishlistIcon.addClass('text-danger');
-                } else {
-                    wishlistIcon.removeClass('text-danger');
+        function updateCartCount() {
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('cart.count') }}',
+                success: function(data) {
+                    $('#mini-cart-count').text(data.count);
+                },
+                error: function() {
+                    console.error('Failed to update cart count');
                 }
-            },
-            error: function() {
-                console.error('Failed to update wishlist count');
-            }
-        });
-    }
+            });
+        }
+
+        function updateWishlistCount() {
+            $.ajax({
+                type: 'GET',
+                url: '{{ route('wishlist.count') }}',
+                success: function(data) {
+                    var wishlistIcon = $('#flaticon-like');
+                    if (data.count > 0) {
+                        wishlistIcon.addClass('text-danger');
+                    } else {
+                        wishlistIcon.removeClass('text-danger');
+                    }
+                },
+                error: function() {
+                    console.error('Failed to update wishlist count');
+                }
+            });
+        }
 
 
         function addToWishlist(productName) {
