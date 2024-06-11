@@ -57,10 +57,10 @@
                             <nav class="main-navigation">
                                 <div class="site-branding">
                                     <a href="/" class="logo">
-                                        <figure class="logo--transparent">
+                                        {{-- <figure class="logo--transparent">
                                             <img src="{{ asset('/img/bytbally.jpeg') }}" class="d-none d-lg-block"
                                                 style="height: 40px; border-radius:10px; margin:10px" alt="Logo">
-                                        </figure>
+                                        </figure> --}}
                                         <figure class="logo--normal">
                                             <img src="{{ asset('/img/bytbally.jpeg') }}" class="d-none d-lg-block"
                                                 style="height: 40px" alt="Logo">

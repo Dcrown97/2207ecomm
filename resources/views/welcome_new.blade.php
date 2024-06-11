@@ -52,27 +52,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="item">
-                    <div class="single-slide slider-height-2  d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/CROPPED1.png') }}); ">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-8">
-                                    <div class="slider-content text-center">
-                                        <h1 class="heading__primary color--white mb--30">
-                                            <span class="heading__primary--sub" data-animation="fadeInUp"
-                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
-                                            <span class="heading__primary--main" data-animation="fadeInUp"
-                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
-                                        </h1>
-                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
-                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
                         style="background-image: url({{ asset('/img/2207-2.png') }});">
@@ -115,27 +95,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="item">
-                    <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/CROPPED5.png') }});">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-8">
-                                    <div class="slider-content text-center">
-                                        <h1 class="heading__primary color--white mb--30">
-                                            <span class="heading__primary--sub" data-animation="fadeInUp"
-                                                data-duration=".4s" data-delay=".7s">Simple.Colourful.Classy</span>
-                                            <span class="heading__primary--main" data-animation="fadeInUp"
-                                                data-duration=".4s" data-delay="1s">For Everyday Woman!</span>
-                                        </h1>
-                                        <a href="/shop" class="btn" data-animation="fadeInUp" data-duration=".4s"
-                                            data-delay="1.2s">Shop Now <i class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </section>
         <!-- Slider area End -->
@@ -168,42 +127,6 @@
                             </div>
                         @endforeach
                     @endif
-                    {{-- <div class="col-md-4 mb-sm--50">
-                        <div class="banner-box">
-                            <div class="banner-inner banner-hover-2 banner-info-over-img banner-info-center">
-                                <figure class="banner-image">
-                                    <img src="./zakas/assets/img/banner/banner-18.jpg" alt="Banner">
-                                </figure>
-                                <div class="banner-info">
-                                    <div class="banner-info--inner text-center">
-                                        <p class="banner-title-1 color--white mb--20">Up Coming Discount</p>
-                                        <p class="banner-title-3 color--white mb--10">Accessories You Want</p>
-                                        <a href="shop.html" class="btn btn-no-bg btn-color-white">Shop Now <i
-                                                class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                                <a href="shop.html" class="banner-link"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-sm--50">
-                        <div class="banner-box">
-                            <div class="banner-inner banner-hover-2 banner-info-over-img banner-info-center">
-                                <figure class="banner-image">
-                                    <img src="./zakas/assets/img/banner/banner-19.jpg" alt="Banner">
-                                </figure>
-                                <div class="banner-info">
-                                    <div class="banner-info--inner text-center">
-                                        <p class="banner-title-1 color--white mb--20">Up Coming Discount</p>
-                                        <p class="banner-title-3 color--white mb--10">Deep Olive Scarf</p>
-                                        <a href="shop.html" class="btn btn-no-bg btn-color-white">Shop Now <i
-                                                class="fa fa-angle-double-right"></i></a>
-                                    </div>
-                                </div>
-                                <a href="shop.html" class="banner-link"></a>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -220,119 +143,15 @@
                 </div>
                 <div class="row">
                     @if (!empty($latestProducts))
-                        {{-- {{ dd($latestProducts) }} --}}
                         @php($count = 1)
                         @foreach ($latestProducts as $product)
-                            {{-- <div class="col-sm-6 mb-sm--50">
-                                <div class="zakas-product product-style-2 h-100">
-                                    <div class="product-inner">
-                                        <figure class="product-image">
-                                            <a href="{{ route('product.view', $product->name) }}">
-                                                <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
-                                                    alt="{{ $product->name }}">
-                                            </a>
-                                        </figure>
-                                        <div class="product-info">
-                                            <div class="zakas-product-action mb--25">
-                                                <div class="product-action d-flex justify-content-center">
-
-                                                    <a onclick="addToWishlist('{{ $product->name }}')"
-                                                        class="action-btn">
-                                                        <i class="flaticon flaticon-like"></i>
-                                                    </a>
-                                                    <a href="{{ route('product.view', $product->name) }}"
-                                                        class="action-btn quick-view">
-                                                        <i class="flaticon flaticon-eye"></i>
-                                                    </a>
-                                                </div>
-                                                <select name="size" id="size{{ $count }}"
-                                                    style="width: 150px; border: 0.5px solid gray; border-radius: 5px">
-                                                    <option value="">Select Size</option>
-                                                    @foreach ($product->sizes as $size)
-                                                        <option value="{{ $size->id }}">Size:
-                                                            {{ $size->size . $size->measure }}; Price:
-                                                            @if (session('currency') == 'Naira')
-                                                                ₦{{ number_format($size->cost_ngn, 2) }}
-                                                            @else
-                                                                ${{ number_format($size->cost_dol) }}
-                                                            @endif
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <h3 class="product-title mb--15">
-                                                <a
-                                                    href="{{ route('product.view', $product->name) }}">{{ $product->name }}</a>
-                                            </h3>
-                                            <div class="product-price-wrapper mb--30" style="color: white">
-                                                @if ($product->sizes->isNotEmpty())
-                                                    @if (session('currency') == 'Naira')
-                                                        ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
-                                                    @else
-                                                        ${{ number_format($product->sizes[0]->cost_dol) }}
-                                                    @endif
-                                                @endif
-                                            </div>
-                                            <input type="hidden" name="product" id="product{{ $count }}"
-                                                value="{{ $product->name }}">
-                                            <a onclick="addToCart('product{{ $count }}', 'size{{ $count }}', 'pop-show', {{ $count }})"
-                                                class="btn btn-small btn-bg-sand btn-color-dark">
-                                                Add To Cart
-                                            </a>
-                                        </div>
-                                        <span class="product-badge">Hot</span>
-                                    </div>
-                                </div>
-                            </div> --}}
-
                             <div class="col-sm-6 mb-sm-4">
                                 <div class="card h-100">
                                     <a href="{{ route('product.view', $product->name) }}">
                                         <img src="{{ asset('/img/products/' . $product->images[0]->file_path) }}"
                                             class="card-img-top" alt="{{ $product->name }}">
                                     </a>
-                                    {{-- <div class="card-body d-flex flex-column justify-content-between">
-            <div>
-                <h5 class="card-title fs-4">{{ $product->name }}</h5>
-                <div class="product-price-wrapper mb-3">
-                    @if ($product->sizes->isNotEmpty())
-                        <span class="text-muted fs-5">
-                            @if (session('currency') == 'Naira')
-                                ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
-                            @else
-                                ${{ number_format($product->sizes[0]->cost_dol) }}
-                            @endif
-                        </span>
-                    @endif
-                </div>
-            </div>
-            <div class="mb-3">
-                <select class="form-select mb-3" name="sizes" id="size{{ $count }}">
-                    <option value="">Select Size</option>
-                    @foreach ($product->sizes as $size)
-                        <option value="{{ $size->id }}">
-                            Size: {{ $size->size . $size->measure }};
-                            Price:
-                            @if (session('currency') == 'Naira')
-                                ₦{{ number_format($size->cost_ngn, 2) }}
-                            @else
-                                ${{ number_format($size->cost_dol) }}
-                            @endif
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <a onclick="addToWishlist('{{ $product->name }}')" class="btn btn-outline-secondary">
-                    <i class="flaticon flaticon-like"></i>
-                </a>
-                <a data-bs-toggle="modal" data-bs-target="#productModal" class="btn btn-outline-secondary">
-                    <i class="flaticon flaticon-eye"></i>
-                </a>
-            </div>
-            <a onclick="addToCart('product{{ $count }}', 'size{{ $count }}', 'pop-show', {{ $count }})"
-               class="btn btn-primary w-100">Add To Cart</a>
-        </div> --}}
+                                    
                                     <div class="card-body d-flex flex-column justify-content-center">
                                         <h5 class="card-title fs-4">{{ $product->name }}</h5>
                                         <select class="form-select mb-3" name="sizes" id="size{{ $count }}">
@@ -490,10 +309,11 @@
                                                                         </option>
                                                                     @endforeach
                                                                 </select>
-                                                                <div class="d-flex justify-content-center mt-4"
-                                                                    style="height: 20px">
-                                                                    @if ($product->sizes->isNotEmpty())
-                                                                        <span class="text-muted fs-4">
+                                                            
+                                                                   {{-- <div class="row w-100 ms-2">
+                                                                    <div class="col">
+                                                                         @if ($product->sizes->isNotEmpty())
+                                                                        <span class="fs-4">
                                                                             @if (session('currency') == 'Naira')
                                                                                 ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
                                                                             @else
@@ -501,20 +321,49 @@
                                                                             @endif
                                                                         </span>
                                                                     @endif
-                                                                    <a onclick="addToWishlist('{{ $product->name }}')"
-                                                                        class="action-btn mt-2">
+                                                                    </div>
+                                                                    <div class="col">
+                                                                           <a onclick="addToWishlist('{{ $product->name }}')"
+                                                                        class="">
                                                                         <i class="flaticon flaticon-like"></i>
                                                                     </a>
+                                                                    </div>
+                                                                    <div class="col">
                                                                     <a data-bs-toggle="modal"
                                                                         data-bs-target="#productModal"
-                                                                        class="action-btn quick-view">
+                                                                        class="">
                                                                         <i class="flaticon flaticon-eye"></i>
                                                                     </a>
-                                                                </div>
+                                                                    </div>
+                                                                   </div> --}}
+
+                                                                   <div class="row w-100 d-flex align-items-center flex-nowrap">
+    <div class="col-auto">
+        @if ($product->sizes->isNotEmpty())
+            <span class="fs-4">
+                @if (session('currency') == 'Naira')
+                    ₦{{ number_format($product->sizes[0]->cost_ngn, 2) }}
+                @else
+                    ${{ number.format($product->sizes[0]->cost_dol) }}
+                @endif
+            </span>
+        @endif
+    </div>
+    <div class="col-auto">
+        <a onclick="addToWishlist('{{ $product->name }}')" class="">
+            <i class="flaticon flaticon-like"></i>
+        </a>
+    </div>
+    <div class="col-auto">
+        <a data-bs-toggle="modal" data-bs-target="#productModal" class="">
+            <i class="flaticon flaticon-eye"></i>
+        </a>
+    </div>
+</div>
 
                                                                 <hr>
                                                                 <input type="hidden" name="product" id="product2{{ $count }}"
-                                                value="{{ $product->name }}">
+                                                                     value="{{ $product->name }}">
                                                                 <a onclick="addToCart('product2{{ $count }}', 'size2{{ $count }}', 'pop-show', {{ $count }})"
                                                                     class="btn btn-small btn-primary w-100">Add To Cart</a>
                                                             </div>
