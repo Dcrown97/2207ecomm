@@ -506,8 +506,37 @@ textarea,
     -o-box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
 }
+.user-info-menu1 {
+    left: 50%;
+    top: 150%;
+    min-width: 100px;
+    margin-top: 30px;
+    background: #fff;
+    padding: 15px 0;
+    pointer-events: none;
+    z-index: 111;
+    white-space: -moz-nowrap;
+    white-space: nowrap;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    -webkit-box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+}
 @media (max-width: 87.4375em) {
     .user-info-menu {
+        -webkit-transform: translateX(-67%);
+        -moz-transform: translateX(-67%);
+        -ms-transform: translateX(-67%);
+        -o-transform: translateX(-67%);
+        transform: translateX(-67%);
+    }
+    .user-info-menu1 {
         -webkit-transform: translateX(-67%);
         -moz-transform: translateX(-67%);
         -ms-transform: translateX(-67%);
@@ -523,6 +552,13 @@ textarea,
         -o-transform: translateX(-50%);
         transform: translateX(-50%);
     }
+    .user-info-menu1 {
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
 }
 .user-info-menu li a {
     text-transform: uppercase;
@@ -531,8 +567,19 @@ textarea,
     padding: 8px 30px;
     text-align: left;
 }
+.user-info-menu1 li a {
+    text-transform: uppercase;
+    font-size: 13px;
+    display: block;
+    padding: 8px 30px;
+    text-align: left;
+}
 
 .user-info:hover .user-info-menu {
+    top: 100%;
+    pointer-events: visible;
+}
+.user-info:hover .user-info-menu1 {
     top: 100%;
     pointer-events: visible;
 }
@@ -4496,7 +4543,7 @@ textarea,
 .mobile-menu .mean-bar .mean-nav {
     background-color: white !important;
     margin-top: 0;
-    max-width: 260px;
+    max-width: 250px;
 }
 .mobile-menu .mean-bar .mean-nav > ul {
     /* background-color: GRAY; */
@@ -7303,6 +7350,7 @@ Bootstrap Dropdown
 ****************/
 .header-toolbar__btn.mini-cart-btn .mini-cart-count,
 .user-info-menu,
+.user-info-menu1,
 .banner-box .banner-info-over-img .banner-info,
 .banner-box .banner-overlay,
 .banner-badge-wrapper.abs-center,
@@ -7449,6 +7497,7 @@ Bootstrap Dropdown
 a,
 button,
 .user-info-menu,
+.user-info-menu1,
 .banner-box .banner-info,
 .banner-box .banner-hover-1 .banner-image,
 .banner-box .banner-hover-1 .banner-image:after,
@@ -7484,6 +7533,7 @@ button,
 
 .header-toolbar__btn.menu-btn i,
 .user-info-menu,
+.user-info-menu1,
 .banner-box .banner-hover-1 .banner-image:after,
 .blog-info,
 .home-08-banner-01 .banner-overlay,
@@ -7506,6 +7556,7 @@ button,
 }
 
 .user-info:hover .user-info-menu,
+.user-info:hover .user-info-menu1,
 .banner-box .banner-hover-1:hover .banner-image:after,
 .blog:hover .blog-info,
 .blog-style-2 .blog-info,
@@ -24012,6 +24063,7 @@ button,
 }
 
 .user-info-menu li a:hover,
+.user-info-menu1 li a:hover,
 .footer-menu li a:hover,
 .footer .copyright-text a,
 .footer .copyright-text i,
@@ -24088,6 +24140,7 @@ a,
 .sticky-header .header-toolbar.white-color .header-toolbar__btn,
 .sticky-header .toolbar-btn.color--white,
 .user-info-menu li a,
+.user-info-menu1 li a,
 .footer-menu li a,
 .blog-meta-btn sup,
 .single-post-details .entry-meta a,
