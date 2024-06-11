@@ -33,7 +33,7 @@
                 }' style="background-color: gray">
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/CROPPED3.png') }});">
+                        style="background-image: url({{ asset('/img/2207-3.png') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -75,7 +75,7 @@
                 </div> --}}
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/hero-bgT2.png') }});">
+                        style="background-image: url({{ asset('/img/2207-2.png') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -96,7 +96,7 @@
                 </div>
                 <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
-                        style="background-image: url({{ asset('/img/CROPPED4.png') }});">
+                        style="background-image: url({{ asset('/img/2207-1.png') }});">
                         <div class="container">
                             <div class="row">
                                 <div class="col-xl-6 col-lg-8">
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
+                {{-- <div class="item">
                     <div class="single-slide slider-height-2 d-flex align-items-center responsive-background"
                         style="background-image: url({{ asset('/img/CROPPED5.png') }});">
                         <div class="container">
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
         <!-- Slider area End -->
@@ -587,13 +587,13 @@
                             <i class="flaticon flaticon-present"></i>
                         </div>
                     </div>
-                    {{-- <div class="col-md-3 mb-sm--50">
+                    <div class="col-md-3 mb-sm--50">
                         <div class="method-box-2 text-center pt--35 pb--30">
-                            <h4>24/7 Support</h4>
-                            <p>Our staff are available to provide support anytime</p>
+                            <h4>Exclusive Designs</h4>
+                            <p>Discover unique and trendy fashion items</p>
                             <i class="flaticon flaticon-two-circling-arrows"></i>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-md-3 mb-sm--50">
                         <div class="method-box-2 text-center pt--35 pb--30">
                             <h4>Secure Payment</h4>
