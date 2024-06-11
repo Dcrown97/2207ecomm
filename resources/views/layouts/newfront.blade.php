@@ -66,36 +66,7 @@
                                                 <span class="mm-text">Shop All</span>
                                             </a>
                                         </li>
-                                        {{-- @if ($allcategories->isNotEmpty())
-                                            @foreach ($allcategories as $cat)
-                                                <li class="mainmenu__item menu-item-has-children">
-                                                    <a href="/shop?cat={{ $cat->name }}" class="mainmenu__link">
-                                                        <span class="mm-text">{{ $cat->name }}</span>
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        @endif --}}
-
-                                        {{-- <li class="mainmenu__item menu-item-has-children active">
-                                            <a href="index.html" class="mainmenu__link">
-                                                <span class="mm-text">Product Categories</span>
-                                            </a>
-                                            <ul class="megamenu two-column">
-                                                <li>
-                                                    <ul>
-                                                        @if ($allcategories->isNotEmpty())
-                                                            @foreach ($allcategories as $cat)
-                                                                <li>
-                                                                    <a href="/shop?cat={{ $cat->name }}">
-                                                                        <span class="mm-text">{{ $cat->name }}</span>
-                                                                    </a>
-                                                                </li>
-                                                            @endforeach
-                                                        @endif
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </li> --}}
+                                    
 
                                         <li class="mainmenu__item menu-item-has-children">
                                             <a href="shop.html" class="mainmenu__link">
@@ -108,117 +79,13 @@
                                                             <a class="megamenu-title" href="#">
                                                                 <span class="mm-text">{{ $cat->name }}</span>
                                                             </a>
-                                                            <ul>
-                                                                @foreach ($cat->products as $product)
-                                                                    <li>
-                                                                    <a href="shop-fullwidth.html">
-                                                                        <span class="mm-text">{{ $product->name }}</span>
-                                                                    </a>
-                                                                </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        <hr>
+                                                           
                                                         </li>
-                                                        {{-- </div> --}}
+                                                    
                                                     @endforeach
-                                                    {{-- </div> --}}
+                                           
                                                 @endif
-                                                {{-- <li>
-                                                    <a class="megamenu-title" href="#">
-                                                        <span class="mm-text">Shop List</span>
-                                                    </a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="shop-list.html">
-                                                                <span class="mm-text">Full Width</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-list-sidebar.html">
-                                                                <span class="mm-text">Left Sidebar</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop-list-right-sidebar.html">
-                                                                <span class="mm-text">Right Sidebar</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a class="megamenu-title" href="#">
-                                                        <span class="mm-text">Product Details</span>
-                                                    </a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="product-details.html">
-                                                                <span class="mm-text">Tab Style 1</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-tab-style-2.html">
-                                                                <span class="mm-text">Tab Style 2</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-tab-style-3.html">
-                                                                <span class="mm-text">Tab Style 3</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-gallery-left.html">
-                                                                <span class="mm-text">Gallery Left</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-gallery-right.html">
-                                                                <span class="mm-text">Gallery Right</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-sticky-left.html">
-                                                                <span class="mm-text">Sticky Left</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a class="megamenu-title" href="#">
-                                                        <span class="mm-text">Product Details</span>
-                                                    </a>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="product-details-sticky-right.html">
-                                                                <span class="mm-text">Sticky Right</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-slider-box.html">
-                                                                <span class="mm-text">Slider Box</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-slider-full-width.html">
-                                                                <span class="mm-text">Slider Box Full Width</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-affiliate.html">
-                                                                <span class="mm-text">Affiliate Proudct</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-variable.html">
-                                                                <span class="mm-text">Variable Proudct</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="product-details-group.html">
-                                                                <span class="mm-text">Group Product</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li> --}}
+                                                
                                             </ul>
                                         </li>
 
@@ -514,8 +381,8 @@
             event.preventDefault();
             $(`.${popoverClass}${count}`).popover('hide');
 
-            var product = document.getElementById(productId).value;
-            var size = document.getElementById(sizeId).value;
+            var product = document.getElementById(productId)?.value;
+            var size = document.getElementById(sizeId)?.value;
 
             if (!size) {
                 toastAlert('Error adding product to cart, Please select a size', 'error');

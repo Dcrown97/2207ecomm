@@ -1555,7 +1555,7 @@ textarea,
 }
 .action-btn i {
     font-size: 18px;
-    line-height: 45px;
+    /* line-height: 45px; */
 }
 
 /*-- 23.03 - Close Button --*/
@@ -4829,6 +4829,7 @@ textarea,
 .zakas-product-action {
     left: 50%;
     bottom: 0;
+    width: 100% !important;
     margin-bottom: 1px;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
@@ -4838,7 +4839,7 @@ textarea,
 }
 .zakas-product-action .action-btn {
     margin-right: 1px;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
 }
 .zakas-product-action .product-action > *:nth-child(1) {
     transition-delay: 100ms;

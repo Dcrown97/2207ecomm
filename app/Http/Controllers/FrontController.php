@@ -278,7 +278,7 @@ class FrontController extends Controller
             $count = Session::has('cart') ? count(Session::get('cart')) : 0;
         }
 
-        return response()->json(['count' => $count]);
+        return response()->json(['count' => $count, 'cart' => Session::get('cart')]);
     }
 
 
