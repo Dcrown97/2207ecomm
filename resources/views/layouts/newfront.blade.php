@@ -323,17 +323,23 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="header-toolbar__item">
-                                    <a href="#searchForm" class="header-toolbar__btn toolbar-btn">
-                                        {{-- <i class="flaticon flaticon-search"></i> --}}
+                                <li class="header-toolbar__item user-info">
+                                    <a href="#" class="header-toolbar__btn">
                                         @if (session('currency') == 'Naira')
-                                            {{-- <i class="fa fa-naira"></i> --}}
-                                            {{-- <i class="fa-solid fa-naira-sign"></i> --}}
-                                            <i class="fa fa-money"></i>
+                                            <span class="mr-2">₦</span>
                                         @else
-                                            <i class="fa fa-dollar"></i>
+                                            <span class="mr-2">USD</span>
+                                            {{-- <i class="fa fa-dollar"></i> --}}
                                         @endif
                                     </a>
+                                    <ul class="user-info-menu1">
+                                        <li @if (session('currency') == 'Naira') class="active" @endif>
+                                            <a href="{{ route('currency', 'ngn') }}">(NGN)</a>
+                                        </li>
+                                        <li @if (session('currency') != 'Naira') class="active" @endif>
+                                            <a href="{{ route('currency', 'dol') }}">(USD)</a>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="header-toolbar__item d-lg-none">
                                     <a href="#" class="header-toolbar__btn menu-btn">
@@ -352,27 +358,6 @@
             </div>
         </header>
         <!-- Header End -->
-
-        <!-- Searchform Popup Start -->
-        <div class="searchform__popup" id="searchForm">
-            <a href="#" class="btn-close"><i class="flaticon flaticon-cross"></i></a>
-            <div class="searchform__body">
-                <form class="searchform">
-                    <ul class="currency-list">
-                        <li>Select Currency</li>
-                        <hr>
-                        <hr>
-                        <li @if (session('currency') == 'Naira') class="active" @endif><a
-                                href="{{ route('currency', 'ngn') }}" style="color: blue">Nigerian Niara (NGN)</a>
-                        </li>
-                        <hr>
-                        <li @if (session('currency') != 'Naira') class="active" @endif><a
-                                href="{{ route('currency', 'dol') }}" style="color: blue">US DOLLARS (USD)</a></li>
-                    </ul>
-                </form>
-            </div>
-        </div>
-        <!-- Searchform Popup End -->
 
         @include('partials.success')
         @include('partials.errors')
@@ -461,6 +446,17 @@
     <script src="./zakas/assets/js/vendor.js"></script>
     <!-- Main JS -->
     <script src="./zakas/assets/js/main.js"></script>
+
+    <script>
+        // When the user clicks anywhere outside of the modal, close it
+        $(document).ready(function() {
+            let modal = $('.mean-nav');
+            console.log('first', modal);
+            $(window).on('click', function(event) {
+                modal.addClass('d-none');
+            });
+        });
+    </script>
 
     <script type="text/javascript">
         updateWishlistCount();
