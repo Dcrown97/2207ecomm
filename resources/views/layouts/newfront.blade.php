@@ -192,7 +192,7 @@
                                 <li class="header-toolbar__item user-info">
                                     <a href="#" class="header-toolbar__btn">
                                         @if (session('currency') == 'Naira')
-                                            <span class="mr-2">₦</span>
+                                            <span class="mr-2">NGN</span>
                                         @else
                                             <span class="mr-2">USD</span>
                                             {{-- <i class="fa fa-dollar"></i> --}}
