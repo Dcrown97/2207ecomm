@@ -94,7 +94,21 @@ INDEX:
     Default Body Font:          'Poppins', sans-serif;
 
 */
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900|Roboto:300,400,500,700,900|Open+Sans:400,600,700");
+/* @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900|Roboto:300,400,500,700,900|Open+Sans:400,600,700"); */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lato:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+body {
+    font-family: 'Lato', sans-serif; /* Using Lato for the body text */
+}
+
+.heading {
+    font-family: 'Poppins', sans-serif; /* Using Poppins for headings */
+}
+
+.subheading {
+    font-family: 'Cinzel', serif; /* Using Cinzel for subheadings */
+}
+
 /*****************************
 00. Global CSS
 *****************************/
@@ -4477,6 +4491,8 @@ textarea,
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
+    max-width: 250px;
+
 }
 .mobile-menu .mean-bar * {
     -webkit-box-sizing: border-box;
@@ -4543,7 +4559,6 @@ textarea,
 .mobile-menu .mean-bar .mean-nav {
     background-color: white !important;
     margin-top: 0;
-    max-width: 250px;
 }
 .mobile-menu .mean-bar .mean-nav > ul {
     /* background-color: GRAY; */

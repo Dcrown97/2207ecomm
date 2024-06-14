@@ -314,14 +314,29 @@
     <script src="./zakas/assets/js/main.js"></script>
 
     <script>
-        // When the user clicks anywhere outside of the modal, close it
-        $(document).ready(function() {
-            let modal = $('.mean-nav');
-            console.log('first', modal);
-            $(window).on('click', function(event) {
-                modal.addClass('d-none');
-            });
-        });
+       document.addEventListener('click', function(event) {
+        const meanmenu = document.querySelector('.mean-container');
+        console.log('Clicked element:', event.target);
+        if (!meanmenu.contains(event.target) && !event.target.classList.contains('menu-bar') && !event.target.closest('.menu-bar')) {
+            closeMeanmenu();
+        }
+     });
+
+
+    function closeMeanmenu () {
+         const menuToggle = document.querySelector('.meanmenu-reveal');
+                    console.log('close it');
+                   
+                    jQuery('body').removeClass("mean-container");
+                    jQuery('.mainmenu').css("display", 'none');
+                    isMeanMenuVisible = false;
+                    isMeanMenuActive = false;
+                    const spanElement = menuToggle.querySelector('span');
+                    spanElement.classList.remove('menu-close');
+                    spanElement.classList.add('menu-bar');
+                    // jQuery('.meanmenu-reveal').removeClass("meanclose");
+                }
+
     </script>
 
     <script type="text/javascript">
